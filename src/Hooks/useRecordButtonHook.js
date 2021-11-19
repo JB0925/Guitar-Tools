@@ -74,7 +74,7 @@ const useRecordButtonUpdate = (updatePitch, handleStart, handleClose) => {
     };
     
     const handleClick = () => {
-        let timer1;
+        let timer;
         let audioContext = new AudioContext();
         const analyserNode = audioContext.createAnalyser();
 
@@ -84,11 +84,11 @@ const useRecordButtonUpdate = (updatePitch, handleStart, handleClose) => {
             sourceNode.connect(analyserNode);
             const detector = PitchDetector.forFloat32Array(analyserNode.fftSize);
             const input = new Float32Array(detector.inputLength);
-            timer1 = window.setTimeout(() => changePitch(analyserNode, detector, input, audioContext.sampleRate),5000)
+            timer = window.setTimeout(() => changePitch(analyserNode, detector, input, audioContext.sampleRate),5000)
         });
 
         return () => {
-            clearTimeout(timer1);
+            clearTimeout(timer);
         };
     };
 
