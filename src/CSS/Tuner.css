@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 40%;
 }
 
 .circles {
@@ -17,4 +18,28 @@
 
 .circles i {
     font-size: 2rem;
+    margin: 5px;
+}
+
+.Tuner-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.Tuner-info h3 {
+    margin-left: 20px;
+}
+
+.tunerButton {
+    width: 100%;
+    background-color: green;
+    color: white;
+    border-radius: 8px;
+    border: 1px solid green;
+    padding: 10px;
+    font-size: 2rem;
+    margin-top: 10px;
 }

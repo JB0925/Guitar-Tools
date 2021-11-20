@@ -1,26 +1,20 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { PitchDetector } from "pitchy";
+import { noteFrequencies, START_FREQ, SEMITONE, ALL_NOTES, AudioContext } from "../Helpers/audioInfo";
 
 const useTunerUpdate = () => {
-    const START_FREQ = 440;
-    const SEMITONE = 69;
-    const TUNER_NOTES = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    let audioContext = new AudioContext();
-    const analyserNode = audioContext.createAnalyser();
+    let percentOffNote;
 
-    // const noteFrequencies = [
-    //     { A: 110.00}, { B: 246.94}, { E: 82.41},
-    //     { E: 329.63}, { D: 146.83}, { D: 73},
-    //     { G: 196.00}, { B: 62}
-    // ];
-    
-    const [noteName, setNoteName] = useState("");
-    const [frequency, setFrequency] = useState(0);
+    const initialTunerState = {
+        noteName: "",
+        frequency: 0
+    };
+
+    const [tunerState, setTunerState] = useState(initialTunerState);
+    const { noteName, frequency } = tunerState;
 
     const makeNoteName = freq => {
         const note = 12 * (Math.log(freq / START_FREQ) / (Math.log(2)));
-        // console.log(freq)
         return Math.round(note) + SEMITONE;
     };
 
@@ -37,16 +31,43 @@ const useTunerUpdate = () => {
     const updatePitch = (analyserNode, detector, input, sampleRate) => {
         analyserNode.getFloatTimeDomainData(input);
         const [pitch, clarity] = detector.findPitch(input, sampleRate);
-        const noteName = TUNER_NOTES[makeNoteName(pitch) % 12];
+        const noteName = ALL_NOTES[makeNoteName(pitch) % 12];
         const updatedNote = addOctaveIfNeeded(pitch, noteName);
-        setNoteName(noteName => updatedNote);
-        setFrequency(frequency => pitch);
+        
+        setTunerState(tunerState => ({
+            ...tunerState,
+            noteName: updatedNote,
+            frequency: pitch
+        }));
         window.setTimeout(() => updatePitch(analyserNode, detector, input, sampleRate), 1000);
     };
 
-    document.addEventListener('DOMContentLoaded', () => {
-        document.querySelector(".tunerButton")
-        .addEventListener('click', () => audioContext.resume());
+    const changeColor = frequency => {
+        for (let freq of noteFrequencies) {
+            if (freq[noteName]) {
+                let difference = freq[noteName] - frequency;
+                percentOffNote = difference / freq[noteName];
+
+                if ((percentOffNote >= .025) || (percentOffNote >= -.15 && percentOffNote <= -0.03)) return { color: "red"};
+                if ((percentOffNote > .015 && percentOffNote <= .024) || (percentOffNote < -.01 && percentOffNote > -0.04)) return { color: "yellow"};
+                if ((percentOffNote >= 0 && percentOffNote <= .015) || (percentOffNote <= 0 && percentOffNote >= -.015)) return { color: "green" };
+            }
+        };
+    };
+
+    const formatDistanceFromNote = () => {
+        if (percentOffNote) return percentOffNote.toFixed(2);
+        return null
+    };
+
+    const handleClick = evt => {
+        console.log(evt.target.checked);
+    };
+
+
+    const startTuner = () => {
+        let audioContext = new AudioContext();
+        const analyserNode = audioContext.createAnalyser();
 
         navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
             let sourceNode = audioContext.createMediaStreamSource(stream);
@@ -55,9 +76,9 @@ const useTunerUpdate = () => {
             const input = new Float32Array(detector.inputLength);
             updatePitch(analyserNode, detector, input, audioContext.sampleRate);
         });
-    });
+    };
 
-    return [noteName, frequency];
+    return [noteName, frequency, handleClick, changeColor, formatDistanceFromNote, startTuner];
 };
 
 export default useTunerUpdate;

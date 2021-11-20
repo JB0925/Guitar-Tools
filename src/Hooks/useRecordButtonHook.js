@@ -1,4 +1,5 @@
 import { PitchDetector } from "pitchy";
+import { START_FREQ, SEMITONE, ALL_NOTES, AudioContext } from "../Helpers/audioInfo";
 
 /**
  * useRecordButtonUpdate Hook
@@ -47,10 +48,6 @@ import { PitchDetector } from "pitchy";
  * Returns: An array with the styleObject for the button, and the handleClick function, to also be passed to the button.
  */
 const useRecordButtonUpdate = (updatePitch, handleStart, handleClose) => {
-    const START_FREQ = 440;
-    const SEMITONE = 69;
-    const ALL_NOTES = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G♯", "A", "A#", "B"];
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
     let noteName;
 
     const styleObject = {
@@ -84,7 +81,7 @@ const useRecordButtonUpdate = (updatePitch, handleStart, handleClose) => {
             sourceNode.connect(analyserNode);
             const detector = PitchDetector.forFloat32Array(analyserNode.fftSize);
             const input = new Float32Array(detector.inputLength);
-            timer = window.setTimeout(() => changePitch(analyserNode, detector, input, audioContext.sampleRate),5000)
+            timer = window.setTimeout(() => changePitch(analyserNode, detector, input, audioContext.sampleRate),5000);
         });
 
         return () => {

@@ -1,41 +1,36 @@
 import React from "react";
 import "../CSS/Tuner.css";
 import useTunerUpdate from "../Hooks/useTunerHook";
+import TunerIndicator from "./TunerIndicators";
 
 const Tuner = () => {
-    let [noteName, frequency] = useTunerUpdate();
-
-    const noteFrequencies = [
-        { A: 110.00}, { B3: 246.94}, { E2: 82.41},
-        { E4: 329.63}, { D3: 146.83}, { D2: 73},
-        { G: 196.00}, { B2: 62}
-    ];
-
-    const changeColor = frequency => {
-        for (let freq of noteFrequencies) {
-            if (freq[noteName]) {
-                let difference = freq[noteName] - frequency;
-                if ((difference > 75) || (difference < 0 && difference > -75)) return { color: "red"};
-                if ((difference > 25 && difference < 50) || (difference < -25 && difference > -50)) return { color: "yellow"};
-                if ((difference >= 0 && difference < 15) || (difference <= 0 && difference >= -15)) return { color: "green" };
-            }
-        };
-    };
+    let [noteName, frequency, handleClick, changeColor, formatDistanceFromNote, startTuner] = useTunerUpdate();
     
     const styleObject = changeColor(frequency);
-    console.log(styleObject)
+    const percentage = formatDistanceFromNote();
     
     return (
         <div className="Tuner">
-            <h1>{noteName}</h1>
-            <div className="circles">
-                <i className="fas fa-circle" style={styleObject}></i>
-                <i className="fas fa-circle" style={styleObject}></i>
-                <i className="fas fa-circle" style={styleObject}></i>
-                <i className="fas fa-circle" style={styleObject}></i>
-                <i className="fas fa-circle" style={styleObject}></i>
+            <div className="Tuner-info">
+                <h1>{noteName}</h1>
+                <h3>{percentage}</h3>
             </div>
-            <button className="tunerButton">Click here if there are no notes on your screen.</button>
+            <div className="circles">
+                {/* <i className="fas fa-circle" style={styleObject}></i>
+                <i className="fas fa-circle" style={styleObject}></i>
+                <i className="fas fa-circle" style={styleObject}></i>
+                <i className="fas fa-circle" style={styleObject}></i>
+                <i className="fas fa-circle" style={styleObject}></i> */}
+                <TunerIndicator number={1} frequency={frequency} noteName={noteName} styleObject={styleObject} />
+                <TunerIndicator number={2} frequency={frequency} noteName={noteName} styleObject={styleObject} />
+                <TunerIndicator number={3} frequency={frequency} noteName={noteName} styleObject={styleObject} />
+                <TunerIndicator number={4} frequency={frequency} noteName={noteName} styleObject={styleObject} />
+                <TunerIndicator number={5} frequency={frequency} noteName={noteName} styleObject={styleObject} />
+            </div>
+            <div onClick={handleClick}>
+            
+            </div>
+            <button className="tunerButton" onClick={startTuner}>Start</button>
         </div>
     );
 };
