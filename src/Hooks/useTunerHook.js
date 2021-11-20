@@ -7,11 +7,23 @@ const useTunerUpdate = () => {
 
     const initialTunerState = {
         noteName: "",
-        frequency: 0
+        frequency: 0,
+        noteStatus: "",
+        currentNoteChoice: "",
+        initialChoicesState: {
+            B2: false,
+            D2: false,
+            E2: false,
+            A: false,
+            D3: false,
+            G: false,
+            B3: false,
+            E4: false
+        }
     };
 
     const [tunerState, setTunerState] = useState(initialTunerState);
-    const { noteName, frequency } = tunerState;
+    const { noteName, frequency, noteStatus, currentNoteChoice, initialChoicesState } = tunerState;
 
     const makeNoteName = freq => {
         const note = 12 * (Math.log(freq / START_FREQ) / (Math.log(2)));
@@ -60,8 +72,35 @@ const useTunerUpdate = () => {
         return null
     };
 
-    const handleClick = evt => {
-        console.log(evt.target.checked);
+    const handleClick = (evt, frequency) => {
+        const { name } = evt.target;
+        for (let choice in initialChoicesState) {
+            if (choice === name) initialChoicesState[choice] = true
+            else initialChoicesState[choice] = false
+        };
+        setTunerState(tunerState => ({
+            ...tunerState,
+            currentNoteChoice: name,
+            initialChoicesState: { ...initialChoicesState }
+        }));
+    };
+
+    const doSomething = () => {
+        const closeEnoughDifferences = ["0.00", "0.01", "-0.00", "-0.01"];
+        const formattedPercentOffNote = formatDistanceFromNote();
+        if (noteName !== currentNoteChoice) return "";
+
+        if (closeEnoughDifferences.includes(formattedPercentOffNote) && noteName === currentNoteChoice) {
+            return ""
+        };
+        
+        for (let noteObject of noteFrequencies) {
+            if (frequency < noteObject[currentNoteChoice]) {
+                return "Low"
+            } else if (frequency > noteObject[currentNoteChoice]) {
+                return "High"
+            }
+        };
     };
 
 
@@ -78,7 +117,7 @@ const useTunerUpdate = () => {
         });
     };
 
-    return [noteName, frequency, handleClick, changeColor, formatDistanceFromNote, startTuner];
+    return [noteName, frequency, initialChoicesState, doSomething, handleClick, changeColor, formatDistanceFromNote, startTuner];
 };
 
 export default useTunerUpdate;
