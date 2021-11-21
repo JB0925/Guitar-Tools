@@ -1,5 +1,5 @@
 import { PitchDetector } from "pitchy";
-import { START_FREQ, SEMITONE, ALL_NOTES, AudioContext } from "../Helpers/audioInfo";
+import { makeNoteName, ALL_NOTES, AudioContext } from "../Helpers/audioInfo";
 
 /**
  * useRecordButtonUpdate Hook
@@ -55,16 +55,10 @@ const useRecordButtonUpdate = (updatePitch, handleStart, handleClose) => {
         border: "1px solid red"
     };
 
-    const makeNoteName = freq => {
-        const note = 12 * (Math.log(freq / START_FREQ) / (Math.log(2)));
-        return Math.round(note) + SEMITONE;
-    };
-
     const changePitch = (analyserNode, detector, input, sampleRate) => {
         analyserNode.getFloatTimeDomainData(input);
         const [pitch, clarity] = detector.findPitch(input, sampleRate);
         noteName = ALL_NOTES[makeNoteName(pitch) % 12];
-        console.log(window.localStorage.getItem("oldNote"), noteName);
         const outcome = window.localStorage.getItem("oldNote") === noteName;
         updatePitch(noteName);
         handleClose(outcome);

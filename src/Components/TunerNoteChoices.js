@@ -1,6 +1,22 @@
 import React from "react"
 import "../CSS/TunerNoteChoices.css";
 
+/** TunerNoteChoices Component
+ * 
+ * Params:
+ *      - handleClick: (type: Function): Used to update state in the parent Tuner component. This state 
+ *                                       controls the checkboxes and makes it so that only one checkbox
+ *                                       is checked at a time.
+ *      
+ *      - checkboxChoices: (type: Object): An object full of booleans that gets destructred, and each of 
+ *                                         its attributes passed as the "checked" attribute into the JSX.
+ * 
+ * Hooks: null
+ * 
+ * Returns: A div that contains eight child divs, each one containing a label and a checkbox. This marks the
+ *          current choice of the user and is used to tell the user whether they are higher or lower than the 
+ *          note they are looking for.
+ */
 const TunerNoteChoices = ({ handleClick, checkboxChoices }) => {
     const { B2, D2, E2, A, D3, G, B3, E4 } = checkboxChoices;
     return (
