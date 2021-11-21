@@ -4,6 +4,7 @@ import FlashCardContainer from './FlashCardContainer';
 import useFlashCardUpdate from "../Hooks/FlashCardHooks";
 import FlashCardContext from "../Contexts/FlashCardContext";
 import Tuner from "./Tuner";
+import Metronome from "./Metronome";
 
 /**
  * The central processing for the guitar app. Uses a context provider to pass
@@ -34,7 +35,8 @@ function App() {
     <FlashCardContext.Provider value={value}>
       <div className="App">
         {/* <FlashCardContainer /> */}
-        <Tuner />
+        {/* <Tuner /> */}
+        <Metronome />
       </div>
     </FlashCardContext.Provider>
   );
