@@ -3,7 +3,14 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 100%;
+    width: 50%;
+    padding: 25px;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, 
+                rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, 
+                rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    max-width: 90%;
 }
 
 .Metronome-circle {
@@ -13,5 +20,41 @@
     border-radius: 50%;
     height: 250px;
     width: 250px;
-    border: 10px solid gray;
+    border: 10px solid #3071A9;
+    background-color: lightgray;
+}
+
+.Metronome-btn {
+    background-color: dodgerblue;
+    color: white;
+    padding: 10px;
+    font-size: 2rem;
+    width: 36.5%;
+    border: 1px solid dodgerblue;
+    border-radius: 8px;
+}
+
+@keyframes pulse-animation {
+    0% {
+      box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+    }
+    100% {
+      box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+    }
+  }
+
+@media screen and (max-width: 900px) {
+    .Metronome {
+        width: 75%;
+    }
+
+    .Metronome-btn {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .Metronome-btn {
+        width: 75%;
+    }
 }
