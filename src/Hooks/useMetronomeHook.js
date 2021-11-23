@@ -48,6 +48,20 @@ const useUpdateMetronome = () => {
         return Math.floor(tempo / 0.50);
     };
 
+    const changeMeter = evt => {
+        if (evt.target.checked) {
+            setMetronomeState(metronomeState => ({
+                ...metronomeState,
+                meter: "6/8"
+            }));
+        } else {
+            setMetronomeState(metronomeState => ({
+                ...metronomeState,
+                meter: "4/4"
+            }));
+        }
+    };
+
     const handleClick = () => {
         let timer;
         let currentCount = count;
@@ -114,7 +128,7 @@ const useUpdateMetronome = () => {
     return [
         isPlaying, tempo,
         circleDiv, handleClick,
-        handleChange
+        handleChange, changeMeter
     ];
 };
 
