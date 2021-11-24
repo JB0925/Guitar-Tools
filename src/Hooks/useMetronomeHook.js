@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import Click from "../Sounds/click.wav";
 import Accent from "../Sounds/metronomeup.wav";
 
@@ -24,8 +24,8 @@ const useUpdateMetronome = () => {
         }));
     };
 
-    const updateBeatCountForCurrentMeter = beatCount => {
-        if (meter === "4/4") {
+    const updateBeatCountForCurrentMeter = (beatCount, meterValue) => {
+        if (meterValue === "4/4") {
             if (beatCount === 4) return 1;
             else return beatCount + 1;
         } else {
@@ -43,21 +43,46 @@ const useUpdateMetronome = () => {
         return value;
     };
 
-    const createSetIntervalTimeValue = () => {
-        if (meter === "4/4") return tempo;
+    const createSetIntervalTimeValue = (meterValue) => {
+        if (meterValue === "4/4") return tempo;
         return Math.floor(tempo / 0.50);
     };
 
+    const createTimer = (currentCount, currentTempo, meterValue) => {
+        return setInterval(() => {
+            if (currentCount === 1) accent.play();
+            else click.play();
+            circleDiv.current.style.animation = `pulse-animation ${60000 / tempo}ms infinite`;
+            currentCount = updateBeatCountForCurrentMeter(currentCount, meterValue);
+            setBeatCountInState(currentCount);
+        }, 60000 / currentTempo);
+    };
+
     const changeMeter = evt => {
-        if (evt.target.checked) {
+        let updatedMeter = evt.target.checked ? "6/8" : "4/4";
+        setMetronomeState(metronomeState => ({
+            ...metronomeState,
+            meter: updatedMeter
+        }));
+        
+        if (isPlaying){
+            let timer;
+            let currentCount = 1;
+            clearInterval(intervalID);
             setMetronomeState(metronomeState => ({
                 ...metronomeState,
-                meter: "6/8"
+                intervalID: null,
+                count: 1
             }));
-        } else {
+        
+            let currentTempo = createSetIntervalTimeValue(updatedMeter);
+            
+            timer = createTimer(currentCount, currentTempo, updatedMeter);
+
             setMetronomeState(metronomeState => ({
                 ...metronomeState,
-                meter: "4/4"
+                isPlaying: true,
+                intervalID: timer
             }));
         }
     };
@@ -67,14 +92,9 @@ const useUpdateMetronome = () => {
         let currentCount = count;
 
         if (!isPlaying) {
-            let currentTempo = createSetIntervalTimeValue();
-            timer = setInterval(() => {
-                if (currentCount === 1) accent.play();
-                else click.play();
-                circleDiv.current.style.animation = `pulse-animation ${60000 / tempo}ms infinite`;
-                currentCount = updateBeatCountForCurrentMeter(currentCount);
-                setBeatCountInState(currentCount);
-            },60000 / currentTempo);
+            let currentTempo = createSetIntervalTimeValue(meter);
+        
+            timer = createTimer(currentCount, currentTempo, meter);
 
             setMetronomeState(metronomeState => ({
                 ...metronomeState,
@@ -99,16 +119,10 @@ const useUpdateMetronome = () => {
         let value = getEventValueOnChange(evt, tempo);
         
         if (isPlaying) {
-            let currentTempo = createSetIntervalTimeValue();
+            let currentTempo = createSetIntervalTimeValue(meter);
             clearInterval(intervalID);
 
-            timer = setInterval(() => {
-                if (currentCount === 1) accent.play();
-                else click.play();
-                circleDiv.current.style.animation = `pulse-animation ${60000 / tempo}ms infinite`;
-                currentCount = updateBeatCountForCurrentMeter(currentCount);
-                setBeatCountInState(currentCount);
-            },60000 / currentTempo);
+            timer = createTimer(currentCount, currentTempo, meter);
 
             setMetronomeState(metronomeState => ({
                 ...metronomeState,
