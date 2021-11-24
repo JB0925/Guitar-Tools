@@ -29,7 +29,7 @@ const useTunerIndicatorUpdate = (number, frequency, noteName, styleObject) => {
                     if (color === "yellow" && number <= 2) return styleObject;
                 }
                 else if (frequency > freqObject[noteName]) {
-                    if (color === "red") return styleObject;
+                    if (color === "red" && number <= 5) return styleObject;
                     if (color === "yellow" && number <= 4) return styleObject;
                 };
             }

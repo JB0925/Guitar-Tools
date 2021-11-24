@@ -37,7 +37,7 @@ const useTunerUpdate = () => {
     const { noteName, frequency, currentNoteChoice, initialChoicesState } = tunerState;
 
     /** addOctaveIfNeeded
-     * - a switch statement that appends an octave number
+     * - a series of if statements that appends an octave number
      *   to certain notes. This is needed because, in guitar tuning,
      *   some notes repeat, but are found in different octaves.
      * 
@@ -49,23 +49,15 @@ const useTunerUpdate = () => {
      * Returns: A String, either the note with an octave number attached,
      *          or just the original String.
      */
+    
     const addOctaveIfNeeded = (freq, note) => {
-        switch(freq, note) {
-            case note === "E" && freq > 320:
-                return "E4";
-            case note === "E" && freq < 90:
-                return "E2";
-            case note === "D" && freq < 80:
-                return "D2";
-            case note === "D" && freq > 140:
-                return "D3";
-            case note === "B" && freq < 70:
-                return "B2";
-            case note === "B" && freq > 240:
-                return "B3";
-            default:
-                return note;
-        };
+        if (note === "E" && freq > 320) return "E4";
+        if (note === "E" && freq < 90) return "E2";
+        if (note === "D" && freq < 80) return "D2";
+        if (note === "D" && freq > 140) return "D3";
+        if (note === "B" && freq < 70) return "B2";
+        if (note === "B" && freq > 240) return "B3";
+        return note;
     };
 
     /** updatePitch
@@ -106,12 +98,14 @@ const useTunerUpdate = () => {
      *        TunerIndicator component.
      */
     const changeColor = frequency => {
+        console.log(noteName)
         for (let freq of noteFrequencies) {
             if (freq[noteName]) {
+                
                 let difference = freq[noteName] - frequency;
                 percentOffNote = difference / freq[noteName];
 
-                if ((percentOffNote >= .025) || (percentOffNote >= -.15 && percentOffNote <= -0.03)) return { color: "red"};
+                if ((percentOffNote >= .025) || (percentOffNote >= -.15 && percentOffNote <= -0.02)) return { color: "red"};
                 if ((percentOffNote > .015 && percentOffNote <= .024) || (percentOffNote < -.01 && percentOffNote > -0.04)) return { color: "yellow"};
                 if ((percentOffNote >= 0 && percentOffNote <= .015) || (percentOffNote <= 0 && percentOffNote >= -.015)) return { color: "green" };
             }
@@ -141,12 +135,10 @@ const useTunerUpdate = () => {
 
     // Returns a string to let the user know whether they are higher
     // or lower than their desired note.
-    // If they are within a very fine range OR the current note is not
-    // their desired note, it will return an empty string.
+    // If they are within a very fine range, it will return an empty string.
     const determineNoteDifference = () => {
         const closeEnoughDifferences = ["0.00", "0.01", "-0.00", "-0.01"];
         const formattedPercentOffNote = formatDistanceFromNote();
-        if (noteName !== currentNoteChoice) return "";
 
         if (closeEnoughDifferences.includes(formattedPercentOffNote) && noteName === currentNoteChoice) {
             return ""
