@@ -1,0 +1,80 @@
+.LoginAndSignUpForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.LoginAndSignUpForm form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 25px;
+    width: 50%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, 
+                rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, 
+                rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.LoginAndSignUpForm h1 {
+    align-self: center;
+    font-size: 2rem;
+}
+
+label {
+    font-size: 1.5rem;
+    align-self: flex-start;
+    margin-left: 10%;
+}
+
+input {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    width: 80%;
+}
+
+.LoginAndSignUpForm button {
+    color: white;
+    background-color: dodgerblue;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid dodgerblue;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    width: 80%;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+    input,
+    .LoginAndSignUpForm button {
+        width: 100%;
+    }
+
+    .LoginAndSignUpForm form {
+        width: 75%;
+    }
+
+    label {
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .LoginAndSignUpForm form {
+        width: 95%;
+    }
+}

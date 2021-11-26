@@ -3,10 +3,17 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import FlashCardContainer from "./FlashCardContainer";
 import Tuner from "./Tuner";
 import Metronome from "./Metronome";
+import LoginAndSignUpForm from "./LoginAndSignUpForm";
 
 const Routes = () => {
     return (
         <Switch>
+            <Route exact path="/register">
+                <LoginAndSignUpForm typeOfForm="register" header="Sign Up For an Account" />
+            </Route>
+            <Route exact path="/login">
+                <LoginAndSignUpForm typeOfForm="login" header="Login to Your Account" />
+            </Route>
             <Route exact path="/flashcards">
                 <FlashCardContainer />
             </Route>

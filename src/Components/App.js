@@ -6,6 +6,7 @@ import FlashCardContext from "../Contexts/FlashCardContext";
 import Tuner from "./Tuner";
 import Metronome from "./Metronome";
 import Routes from "./Routes";
+import Login from "./LoginAndSignUpForm";
 
 /**
  * The central processing for the guitar app. Uses a context provider to pass
