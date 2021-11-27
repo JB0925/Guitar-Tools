@@ -1,7 +1,7 @@
 import { useState } from "react";
 import soundApi from "../soundApi";
 
-const useFormUpdate = (typeOfForm) => {
+const useFormUpdate = (typeOfForm, updateLoginState) => {
     let response;
     const initialFormState = {
         username: "",
@@ -28,10 +28,15 @@ const useFormUpdate = (typeOfForm) => {
         :
         response = await soundApi.registerNewUser(formData);
         setFormData(formData => initialFormState);
-        return response;
+        updateLoginState(response, typeOfForm);
     };
 
-    return [formData, handleChange, handleSubmit];
+    const makeStyleObjectForLoginStatus = msg => {
+        if (msg.indexOf("Successfully") === 0) return { color: "green" };
+        return { color: "red" };
+    };
+    
+    return [formData, makeStyleObjectForLoginStatus, handleChange, handleSubmit];
 };
 
 export default useFormUpdate;

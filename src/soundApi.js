@@ -22,7 +22,8 @@ class soundApi {
             window.localStorage.setItem("token", JSON.stringify(token));
             return token;
         } catch (error) {
-            return error.message;
+            const { message } = error.response.data.error;
+            return message;
         };
     };
 
@@ -38,7 +39,8 @@ class soundApi {
             window.localStorage.setItem("token", JSON.stringify(token));
             return token;
         } catch (error) {
-            return error.message;
+            const { message } = error.response.data.error;
+            return message;
         };
     };
 };

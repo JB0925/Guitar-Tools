@@ -5,14 +5,24 @@ import Tuner from "./Tuner";
 import Metronome from "./Metronome";
 import LoginAndSignUpForm from "./LoginAndSignUpForm";
 
-const Routes = () => {
+const Routes = ({ updateLoginState, statusMessage }) => {
     return (
         <Switch>
             <Route exact path="/register">
-                <LoginAndSignUpForm typeOfForm="register" header="Sign Up For an Account" />
+                <LoginAndSignUpForm 
+                    typeOfForm="register" 
+                    header="Sign Up For an Account" 
+                    updateLoginState={updateLoginState}
+                    statusMessage={statusMessage}
+                />
             </Route>
             <Route exact path="/login">
-                <LoginAndSignUpForm typeOfForm="login" header="Login to Your Account" />
+                <LoginAndSignUpForm 
+                    typeOfForm="login" 
+                    header="Login to Your Account" 
+                    updateLoginState={updateLoginState}
+                    statusMessage={statusMessage}
+                />
             </Route>
             <Route exact path="/flashcards">
                 <FlashCardContainer />

@@ -2,11 +2,13 @@ import React from "react";
 import '../CSS/App.css';
 import FlashCardContainer from './FlashCardContainer';
 import useFlashCardUpdate from "../Hooks/FlashCardHooks";
+import useLoginUpdate from "../Hooks/useLoginHook";
 import FlashCardContext from "../Contexts/FlashCardContext";
 import Tuner from "./Tuner";
 import Metronome from "./Metronome";
 import Routes from "./Routes";
 import Login from "./LoginAndSignUpForm";
+import Navbar from "./Navbar";
 
 /**
  * The central processing for the guitar app. Uses a context provider to pass
@@ -27,6 +29,8 @@ function App() {
     successOrFail, updatePitch, handleStart, handleClose
   ] = useFlashCardUpdate();
 
+  const [updateLoginState, statusMessage, isLoggedIn] = useLoginUpdate();
+
   const value = {
     message, isStarted, isRecording, thePitch,
     note, image, successOrFail, updatePitch,
@@ -36,7 +40,8 @@ function App() {
   return (
     <FlashCardContext.Provider value={value}>
       <div className="App">
-        <Routes />
+        <Navbar />
+        <Routes updateLoginState={updateLoginState} statusMessage={statusMessage} />
       </div>
     </FlashCardContext.Provider>
   );
