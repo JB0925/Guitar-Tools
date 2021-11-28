@@ -1,0 +1,46 @@
+.Guitarist {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin-top: 500px;
+}
+
+.Guitarist form {
+    position: absolute;
+    top: 100px;
+}
+
+.GuitaristInfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 48%;
+}
+
+.artistPhoto {
+    width: 48%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.artistPhoto img {
+    width: 400px;
+    height: 400px;
+}
+
+@media screen and (max-width: 900px) {
+    .GuitaristInfo {
+        flex-direction: column-reverse;
+        margin-top: 500px;
+    }
+}
+

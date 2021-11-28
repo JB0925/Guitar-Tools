@@ -43,6 +43,16 @@ class soundApi {
             return message;
         };
     };
+
+    static async getGuitaristInfo(name) {
+        try {
+            const response = await axios.get(`${BASE_URL}guitarist/${name}`);
+            return response.data;
+        } catch (error) {
+            const { message } = error.response.data.error;
+            return message;
+        };
+    };
 };
 
 export default soundApi;

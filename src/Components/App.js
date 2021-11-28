@@ -9,6 +9,7 @@ import Metronome from "./Metronome";
 import Routes from "./Routes";
 import Login from "./LoginAndSignUpForm";
 import Navbar from "./Navbar";
+import GuitaristInfo from "./Guitarist";
 
 /**
  * The central processing for the guitar app. Uses a context provider to pass
@@ -41,7 +42,8 @@ function App() {
     <FlashCardContext.Provider value={value}>
       <div className="App">
         <Navbar />
-        <Routes updateLoginState={updateLoginState} statusMessage={statusMessage} />
+        {/* <Routes updateLoginState={updateLoginState} statusMessage={statusMessage} /> */}
+        <GuitaristInfo />
       </div>
     </FlashCardContext.Provider>
   );
