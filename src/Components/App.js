@@ -26,24 +26,24 @@ import GuitaristInfo from "./Guitarist";
  */
 function App() {
   const [
-    message, isStarted, isRecording, thePitch, note, image,
+    message, isStarted, isRecording, thePitch, correctInARow, note, image,
     successOrFail, updatePitch, handleStart, handleClose
   ] = useFlashCardUpdate();
 
   const [updateLoginState, statusMessage, isLoggedIn] = useLoginUpdate();
-
+  
   const value = {
-    message, isStarted, isRecording, thePitch,
-    note, image, successOrFail, updatePitch,
-    handleStart, handleClose
+    message, isStarted, isRecording, thePitch, correctInARow,
+    note, image, successOrFail, 
+    updatePitch, handleStart, handleClose
   };
 
   return (
     <FlashCardContext.Provider value={value}>
       <div className="App">
         <Navbar />
-        {/* <Routes updateLoginState={updateLoginState} statusMessage={statusMessage} /> */}
-        <GuitaristInfo />
+        <Routes updateLoginState={updateLoginState} statusMessage={statusMessage} />
+        {/* <GuitaristInfo /> */}
       </div>
     </FlashCardContext.Provider>
   );

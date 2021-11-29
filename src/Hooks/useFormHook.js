@@ -9,6 +9,7 @@ const useFormUpdate = (typeOfForm, updateLoginState) => {
     };
 
     const [formData, setFormData] = useState(initialFormState);
+
     const updateForm = (key, newValue) => {
         setFormData(formData => ({
             ...formData,

@@ -58,33 +58,44 @@ const GuitaristInfo = () => {
         return text.split("\n").map(pg => <p>{pg}</p>);
     };
 
+    const formatGuitaristInfo = () => {
+        if (!name) return null;
+        return (
+            <>
+                <h2>Name: {name}</h2>
+                <h3><b>Birth Year:</b> {birthYear}</h3>
+                <h3><b>Death Year:</b> {deathYear}</h3>
+                <h3><b>Genre:</b> {genre}</h3>
+                <p><b>Biography:</b> {formatParagraphs(biography)}</p>
+            </>
+        );
+    };
+
     const { name, birthYear, deathYear, genre, biography, photo } = guitaristInfo;
     console.log(biography.split("\n").join("\n"));
     return (
         <div className="Guitarist">
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="name">Enter a Name</label>
-                <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    onChange={handleChange}
-                    placeholder="Enter a Name"
-                    value={formData}
-                    required
-                />
-                <button className="searchButton">Submit</button>
-            </form>
+            <div className="formDiv">
+                <form onSubmit={handleSubmit}>
+                    <label htmlFor="name">Enter a Name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        onChange={handleChange}
+                        placeholder="Enter a Name"
+                        value={formData}
+                        required
+                    />
+                    <button className="searchButton">Submit</button>
+                </form>
+            </div>
             {badRequestError ?
             <h1>Sorry, we could not find any results for that guitarist...</h1>
             :
             <div className="GuitaristInfo">
                 <div className="info">
-                    <h2>Name: {name}</h2>
-                    <p>Birth Year: {birthYear}</p>
-                    <p>Death Year: {deathYear}</p>
-                    <p>Genre: {genre}</p>
-                    <p>Biography: {formatParagraphs(biography)}</p>
+                    {formatGuitaristInfo()}
                 </div>
                 <div className="artistPhoto">
                     {setPhotoOrPlaceHolder()}

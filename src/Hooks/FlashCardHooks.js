@@ -55,11 +55,12 @@ const useFlashCardUpdate = () => {
         isStarted: false,
         isRecording: false,
         thePitch: '',
-        isCorrect: false
+        isCorrect: false,
+        correctInARow: 0
     };
 
     const [status, setStatus] = useState(initalStatusState);
-    const { message, isStarted, isRecording, thePitch, isCorrect } = status;
+    const { message, isStarted, isRecording, thePitch, isCorrect, correctInARow } = status;
 
     const getCardData = () => {
         const idx = Math.floor(Math.random() * noteImages.length);
@@ -83,13 +84,18 @@ const useFlashCardUpdate = () => {
     }; 
 
     const handleClose = outcome => {
+        let updatedCorrectInaRow;
+
+        if (outcome) updatedCorrectInaRow = correctInARow + 1;
+        else updatedCorrectInaRow = 0;
+
         setStatus(status =>({
             ...status,
             message: "Record",
             isRecording: false,
-            isCorrect: outcome
+            isCorrect: outcome,
+            correctInARow: updatedCorrectInaRow
         }));
-
 };
 
     const { note, image } = getCardData();
@@ -106,7 +112,7 @@ const useFlashCardUpdate = () => {
     const successOrFail = makeSuccessOrFailureMessage();
     
     return [
-        message, isStarted, isRecording, thePitch, note, image,
+        message, isStarted, isRecording, thePitch, correctInARow, note, image,
         successOrFail, updatePitch, handleStart, handleClose
     ];
 };

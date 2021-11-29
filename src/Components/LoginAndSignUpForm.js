@@ -5,7 +5,7 @@ import useFormUpdate from "../Hooks/useFormHook";
 const LoginAndSignUpForm = ({ typeOfForm, header, updateLoginState, statusMessage }) => {
     const [formData, makeStyleObjectForLoginStatus, handleChange, handleSubmit] = useFormUpdate(typeOfForm, updateLoginState);
     const styleObject = makeStyleObjectForLoginStatus(statusMessage);
-    
+
     return (
         <div className="LoginAndSignUpForm">
             <h1>{header}</h1>

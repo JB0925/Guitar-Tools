@@ -2,19 +2,29 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    margin-top: 500px;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    top: 100px;
+    /* margin-top: 500px; */
 }
 
-.Guitarist form {
+.formDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
-    top: 100px;
+    top: 0;
+    /* margin-top: 450px; */
 }
 
 .GuitaristInfo {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    top: 100px;
 }
 
 .info {
@@ -23,13 +33,16 @@
     align-items: flex-start;
     justify-content: center;
     width: 48%;
+    align-self: flex-start;
 }
 
 .artistPhoto {
     width: 48%;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
+    position: relative;
+    height: 100%;
 }
 
 .artistPhoto img {

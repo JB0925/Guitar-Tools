@@ -8,3 +8,9 @@
 h1 {
     text-align: center;
 }
+
+.highScore {
+    position: absolute;
+    top: 60px;
+    left: 5px;
+}

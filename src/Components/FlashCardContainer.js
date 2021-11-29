@@ -23,10 +23,11 @@ import FlashCardContext from "../Contexts/FlashCardContext";
  * Returns: A container for the RecordButton and FlashCard components
  */
 const FlashCardContainer = () => {
-    const { isStarted, isRecording, note, image, successOrFail } = useContext(FlashCardContext);
+    const { isStarted, isRecording, correctInARow, note, image, successOrFail } = useContext(FlashCardContext);
     
     return (
         <div className="FlashCards">
+            <h1 className="highScore">Your High Score: {correctInARow}</h1>
             {!isStarted || !isRecording ? 
                 <h1>Click to Start!</h1>
                 :
