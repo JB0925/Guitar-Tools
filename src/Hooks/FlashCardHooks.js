@@ -11,6 +11,7 @@ import F from "../FlashCardImages/F.jpg";
 import Fsharp from "../FlashCardImages/F#.jpg"
 import G from "../FlashCardImages/G.jpg";
 import Gsharp from "../FlashCardImages/G#.gif";
+import soundApi from "../soundApi";
 
 /**
  * useFlashCardUpdate Hook
@@ -62,6 +63,10 @@ const useFlashCardUpdate = () => {
     const [status, setStatus] = useState(initalStatusState);
     const { message, isStarted, isRecording, thePitch, isCorrect, correctInARow } = status;
 
+    const userIdIsPresent = () => {
+        return JSON.parse(window.localStorage.getItem("userId"));
+    };
+
     const getCardData = () => {
         const idx = Math.floor(Math.random() * noteImages.length);
         return noteImages[idx];
@@ -83,11 +88,35 @@ const useFlashCardUpdate = () => {
         }));
     }; 
 
-    const handleRecordingEnd = positiveOutcomeOrNot => {
-        let updatedCorrectInaRow;
+    const updateHighScore = userIsCorrect => {
+        if (userIsCorrect) return correctInARow + 1;
+        return 0;
+    };
 
-        if (positiveOutcomeOrNot) updatedCorrectInaRow = correctInARow + 1;
-        else updatedCorrectInaRow = 0;
+    const getUserAllTimeHighScore = async(id) => {
+        return await soundApi.getUserHighScore(id);
+    };
+
+    const setAllTimeHighScore = async(id, newHighScore) => {
+        const userData = { id, newHighScore };
+        await soundApi.setUserHighScore(userData);
+    };
+
+    const currentHighGreaterThanAllTimeHigh = (currentHighScore, AllTimeHighScore) => {
+        return currentHighScore > AllTimeHighScore;
+    };
+
+    const handleRecordingEnd = async(positiveOutcomeOrNot) => {
+        let updatedCorrectInaRow = updateHighScore(positiveOutcomeOrNot);
+
+        const userId = userIdIsPresent();
+        if (userId) {
+            let AllTimeHighScore = await getUserAllTimeHighScore(userId);
+            if (currentHighGreaterThanAllTimeHigh(updatedCorrectInaRow, AllTimeHighScore)) {
+                console.log("congrats, you broke your record!!")
+                await setAllTimeHighScore(userId, updatedCorrectInaRow);
+            };
+        }
 
         setStatus(status =>({
             ...status,

@@ -53,6 +53,29 @@ class soundApi {
             return message;
         };
     };
+
+    static async getUserHighScore(id) {
+        try {
+            const response = await axios.get(`${BASE_URL}users/${id}`);
+            const { highScore } = response.data;
+            return highScore;
+        } catch (error) {
+            console.log(error);
+            return error;
+        };
+    };
+
+    static async setUserHighScore({ id, newHighScore }) {
+        const data = { newHighScore };
+        try {
+            const response = await axios.post(`${BASE_URL}users/${id}`, data);
+            const { highScore } = response.data;
+            return highScore;
+        } catch (error) {
+            console.log(error);
+            return error;
+        };
+    };
 };
 
 export default soundApi;
