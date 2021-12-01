@@ -18,9 +18,9 @@ class soundApi {
 
         try {
             const response = await axios.post(`${BASE_URL}auth/signup`, data);
-            const { token } = response.data;
+            const { token, id } = response.data;
             window.localStorage.setItem("token", JSON.stringify(token));
-            return token;
+            return { token, id };
         } catch (error) {
             const { message } = error.response.data.error;
             return message;

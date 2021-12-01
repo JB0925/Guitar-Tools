@@ -41,13 +41,13 @@ nav i {
     align-items: center;
     justify-content: center;
     margin-left: auto;
-    margin-right: 10%;
+    margin-right: 3%;
 }
 
 #visibleNavUl a {
     text-decoration: none;
     color: white;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin-left: 35px;
 }
 
@@ -74,7 +74,7 @@ nav i {
     z-index: 2;
     width: 100%;
     height: 0%;
-    transition: height .7s ease-out;
+    transition: height .4s ease-out;
 }
 
 .pulldown ul {
@@ -92,7 +92,7 @@ nav i {
     color: white;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1150px) {
     .fas {
         display: block;
     }

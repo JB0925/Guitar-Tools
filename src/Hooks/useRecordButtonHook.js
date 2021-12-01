@@ -47,7 +47,7 @@ import { makeNoteName, ALL_NOTES, AudioContext } from "../Helpers/audioInfo";
  * 
  * Returns: An array with the styleObject for the button, and the handleClick function, to also be passed to the button.
  */
-const useRecordButtonUpdate = (updatePitch, handleStart, handleClose) => {
+const useRecordButtonUpdate = (updatePitch, handleRecordingStart, handleRecordingEnd) => {
     let noteName;
 
     const styleObject = {
@@ -61,7 +61,7 @@ const useRecordButtonUpdate = (updatePitch, handleStart, handleClose) => {
         noteName = ALL_NOTES[makeNoteName(pitch) % 12];
         const outcome = window.localStorage.getItem("oldNote") === noteName;
         updatePitch(noteName);
-        handleClose(outcome);
+        handleRecordingEnd(outcome);
     };
     
     const handleClick = () => {
@@ -69,7 +69,7 @@ const useRecordButtonUpdate = (updatePitch, handleStart, handleClose) => {
         let audioContext = new AudioContext();
         const analyserNode = audioContext.createAnalyser();
 
-        handleStart();
+        handleRecordingStart();
         navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
             let sourceNode = audioContext.createMediaStreamSource(stream);
             sourceNode.connect(analyserNode);

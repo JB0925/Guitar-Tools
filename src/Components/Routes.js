@@ -4,8 +4,9 @@ import FlashCardContainer from "./FlashCardContainer";
 import Tuner from "./Tuner";
 import Metronome from "./Metronome";
 import LoginAndSignUpForm from "./LoginAndSignUpForm";
+import GuitaristInfo from "./Guitarist";
 
-const Routes = ({ updateLoginState, statusMessage }) => {
+const Routes = ({ updateLoginState, errorMessage }) => {
     return (
         <Switch>
             <Route exact path="/register">
@@ -13,7 +14,7 @@ const Routes = ({ updateLoginState, statusMessage }) => {
                     typeOfForm="register" 
                     header="Sign Up For an Account" 
                     updateLoginState={updateLoginState}
-                    statusMessage={statusMessage}
+                    errorMessage={errorMessage}
                 />
             </Route>
             <Route exact path="/login">
@@ -21,7 +22,7 @@ const Routes = ({ updateLoginState, statusMessage }) => {
                     typeOfForm="login" 
                     header="Login to Your Account" 
                     updateLoginState={updateLoginState}
-                    statusMessage={statusMessage}
+                    errorMessage={errorMessage}
                 />
             </Route>
             <Route exact path="/flashcards">
@@ -32,6 +33,12 @@ const Routes = ({ updateLoginState, statusMessage }) => {
             </Route>
             <Route exact path="/metronome">
                 <Metronome />
+            </Route>
+            <Route exact path="/guitarists">
+                <GuitaristInfo />
+            </Route>
+            <Route exact path="/logout">
+                <Redirect to="/flashcards" />
             </Route>
             <Redirect to="/flashcards" />
         </Switch>

@@ -27,8 +27,8 @@ import "../CSS/RecordButton.css";
  * Returns: A button that is used to start recordings and update state
  */
 const RecordButton = () => {
-    const { message, updatePitch, handleStart, handleClose, isRecording } = useContext(FlashCardContext);
-    const [styleObject, handleClick] = useRecordButtonUpdate(updatePitch, handleStart, handleClose);
+    const { message, updatePitch, handleRecordingStart, handleRecordingEnd, isRecording } = useContext(FlashCardContext);
+    const [styleObject, handleClick] = useRecordButtonUpdate(updatePitch, handleRecordingStart, handleRecordingEnd);
 
     return (
         <div className="RecordButton">

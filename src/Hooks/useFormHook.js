@@ -29,15 +29,14 @@ const useFormUpdate = (typeOfForm, updateLoginState) => {
         :
         response = await soundApi.registerNewUser(formData);
         setFormData(formData => initialFormState);
-        updateLoginState(response, typeOfForm);
+        updateLoginState(response);
     };
 
-    const makeStyleObjectForLoginStatus = msg => {
-        if (msg.indexOf("Successfully") === 0) return { color: "green" };
+    const makeStyleObjectForErrorMessage = msg => {
         return { color: "red" };
     };
     
-    return [formData, makeStyleObjectForLoginStatus, handleChange, handleSubmit];
+    return [formData, makeStyleObjectForErrorMessage, handleChange, handleSubmit];
 };
 
 export default useFormUpdate;

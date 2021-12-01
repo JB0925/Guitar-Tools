@@ -2,9 +2,9 @@ import React from "react";
 import "../CSS/LoginAndSignUpForm.css";
 import useFormUpdate from "../Hooks/useFormHook";
 
-const LoginAndSignUpForm = ({ typeOfForm, header, updateLoginState, statusMessage }) => {
-    const [formData, makeStyleObjectForLoginStatus, handleChange, handleSubmit] = useFormUpdate(typeOfForm, updateLoginState);
-    const styleObject = makeStyleObjectForLoginStatus(statusMessage);
+const LoginAndSignUpForm = ({ typeOfForm, header, updateLoginState, errorMessage }) => {
+    const [formData, makeStyleObjectForErrorMessage, handleChange, handleSubmit] = useFormUpdate(typeOfForm, updateLoginState);
+    const styleObject = makeStyleObjectForErrorMessage(errorMessage);
 
     return (
         <div className="LoginAndSignUpForm">
@@ -34,7 +34,7 @@ const LoginAndSignUpForm = ({ typeOfForm, header, updateLoginState, statusMessag
                     <button type="submit">Submit</button>
                 </form>
             </div>
-            <h3 style={styleObject}>{statusMessage}</h3>
+            <h3 style={styleObject}>{errorMessage}</h3>
         </div>
     );
 };

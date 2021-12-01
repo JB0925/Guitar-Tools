@@ -10,6 +10,7 @@ import Routes from "./Routes";
 import Login from "./LoginAndSignUpForm";
 import Navbar from "./Navbar";
 import GuitaristInfo from "./Guitarist";
+import useNavbarToggle from "../Hooks/useNavbarHook";
 
 /**
  * The central processing for the guitar app. Uses a context provider to pass
@@ -27,23 +28,22 @@ import GuitaristInfo from "./Guitarist";
 function App() {
   const [
     message, isStarted, isRecording, thePitch, correctInARow, note, image,
-    successOrFail, updatePitch, handleStart, handleClose
+    successOrFail, updatePitch, handleRecordingStart, handleRecordingEnd
   ] = useFlashCardUpdate();
 
-  const [updateLoginState, statusMessage, isLoggedIn] = useLoginUpdate();
+  const [updateLoginState, errorMessage, isLoggedIn, handleLogout] = useLoginUpdate();
   
   const value = {
     message, isStarted, isRecording, thePitch, correctInARow,
     note, image, successOrFail, 
-    updatePitch, handleStart, handleClose
+    updatePitch, handleRecordingStart, handleRecordingEnd
   };
 
   return (
     <FlashCardContext.Provider value={value}>
       <div className="App">
-        <Navbar />
-        <Routes updateLoginState={updateLoginState} statusMessage={statusMessage} />
-        {/* <GuitaristInfo /> */}
+        <Navbar isLoggedIn={isLoggedIn} updateLogin={handleLogout}/>
+        <Routes updateLoginState={updateLoginState} errorMessage={errorMessage} />
       </div>
     </FlashCardContext.Provider>
   );

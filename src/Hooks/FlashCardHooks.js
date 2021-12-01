@@ -74,7 +74,7 @@ const useFlashCardUpdate = () => {
         }));
     };
 
-    const handleStart = () => {
+    const handleRecordingStart = () => {
         setStatus(status => ({
             ...status,
             message: "Recording",
@@ -83,17 +83,17 @@ const useFlashCardUpdate = () => {
         }));
     }; 
 
-    const handleClose = outcome => {
+    const handleRecordingEnd = positiveOutcomeOrNot => {
         let updatedCorrectInaRow;
 
-        if (outcome) updatedCorrectInaRow = correctInARow + 1;
+        if (positiveOutcomeOrNot) updatedCorrectInaRow = correctInARow + 1;
         else updatedCorrectInaRow = 0;
 
         setStatus(status =>({
             ...status,
             message: "Record",
             isRecording: false,
-            isCorrect: outcome,
+            isCorrect: positiveOutcomeOrNot,
             correctInARow: updatedCorrectInaRow
         }));
 };
@@ -113,7 +113,7 @@ const useFlashCardUpdate = () => {
     
     return [
         message, isStarted, isRecording, thePitch, correctInARow, note, image,
-        successOrFail, updatePitch, handleStart, handleClose
+        successOrFail, updatePitch, handleRecordingStart, handleRecordingEnd
     ];
 };
 

@@ -3,40 +3,73 @@ import { useHistory } from "react-router";
 
 const useLoginUpdate = () => {
     const history = useHistory();
-    useEffect(() => {
-        const alreadyLoggedIn = () => {
-            const userIdIsPresent = JSON.parse(window.localStorage.getItem("userId"));
-            if (userIdIsPresent) return history.push("/flashcards");
-        };
-        alreadyLoggedIn();
-    },[]);
 
     const initialLoginState = {
-        statusMessage: "",
+        errorMessage: "",
         isLoggedIn: false
     };
 
     const [loginState, setLoginState] = useState(initialLoginState);
 
-    const createFeedbackMessage = (msg, typeOfForm) => {
+    const userIdIsInStorage = () => {
+        return JSON.parse(window.localStorage.getItem("userId"));
+    };
+
+    const setUserIdInStorage = userId => {
+        window.localStorage.setItem("userId", JSON.stringify(userId));
+    };
+
+    const removeUserIdFromStorage = () => {
+        window.localStorage.removeItem("userId");
+    };
+
+    const handleInvalidLogin = (errorMessage) => {
+        removeUserIdFromStorage();
+        handleLogout(errorMessage);
+
+        setTimeout(() => {
+            resetErrorMessageOnly();
+        },3000);
+    };
+
+    const handleLogin = () => {
+        setLoginState(loginState => ({
+            ...loginState,
+            isLoggedIn: true,
+            errorMessage: ""
+        }));
+
+        return history.push("/flashcards");
+    };
+
+    const handleLogout = (newErrorMessage = "") => {
+        setLoginState(loginState => ({
+            ...loginState,
+            isLoggedIn: false,
+            errorMessage: newErrorMessage
+        }));
+    };
+
+    const resetErrorMessageOnly = () => {
+        setLoginState(loginState => ({
+            ...loginState,
+            errorMessage: ""
+        }));
+    };
+
+    const getFeedbackMessageIfError = msg => {
         if (msg.indexOf('ey') === 0) {
-            // const successMessage = typeOfForm === "login" ? "Successfully Logged In!" : 
-            //                                       "Successfully Signed Up and Logged In!";
-            // return successMessage;
             return ""
         };
         return msg;
     };
 
-    const setIsLoggedIn = msg => {
-        return msg.indexOf("Successfully") === 0;
-    };
-
-    const determineTypeOfResponse = response => {
+    const determineIfApiResponseIsErrorOrSuccess = response => {
         let msg;
         let id;
         const keys = Object.keys(response);
 
+        // If there is a token AND an id, login/registration was successful. Otherwise, an error occurred.
         if (keys.length === 2) {
             msg = response.token;
             id = response.id;
@@ -47,27 +80,31 @@ const useLoginUpdate = () => {
         return { msg, id };
     };
 
-    const updateLoginState = (response, typeOfForm) => { 
-        const { msg, id } = determineTypeOfResponse(response);
-        const newStatusMessage = createFeedbackMessage(msg, typeOfForm);
-
+    const updateLoginState = (response) => { 
+        const { msg, id } = determineIfApiResponseIsErrorOrSuccess(response);
+        const newStatusMessage = getFeedbackMessageIfError(msg);
+        
         if (id) {
-            window.localStorage.setItem("userId", JSON.stringify(id));
-            return history.push("/flashcards");
+            setUserIdInStorage(id);
+            handleLogin();
+        
         } else {
-            window.localStorage.removeItem("userId");
-        }
-
-        setLoginState(loginState => ({
-            ...loginState,
-            statusMessage: newStatusMessage,
-            isLoggedIn: setIsLoggedIn(newStatusMessage)
-        }));
+            handleInvalidLogin(newStatusMessage);
+        };
     };
 
-    const { statusMessage, isLoggedIn, userId } = loginState;
+    useEffect(() => {
+        const alreadyLoggedIn = () => {
+            if (userIdIsInStorage()) {
+                handleLogin();
+            }
+        };
+        alreadyLoggedIn();
+    },[]);
 
-    return [updateLoginState, statusMessage, isLoggedIn, userId];
+    const { errorMessage, isLoggedIn } = loginState;
+
+    return [updateLoginState, errorMessage, isLoggedIn, handleLogout];
 };
 
 export default useLoginUpdate;
