@@ -57,7 +57,8 @@ const useFlashCardUpdate = () => {
         isRecording: false,
         thePitch: '',
         isCorrect: false,
-        correctInARow: 0
+        correctInARow: 0,
+        recordBreakingMessage: null
     };
 
     const [status, setStatus] = useState(initalStatusState);
@@ -88,6 +89,16 @@ const useFlashCardUpdate = () => {
         }));
     }; 
 
+    const updateStateAfterRecordingEnds = (gameOutcome, newCurrentHighScore) => {
+        setStatus(status =>({
+            ...status,
+            message: "Record",
+            isRecording: false,
+            isCorrect: gameOutcome,
+            correctInARow: newCurrentHighScore
+        }));
+    };
+
     const updateHighScore = userIsCorrect => {
         if (userIsCorrect) return correctInARow + 1;
         return 0;
@@ -106,6 +117,13 @@ const useFlashCardUpdate = () => {
         return currentHighScore > AllTimeHighScore;
     };
 
+    const createCelebratoryMessage = () => {
+        setStatus(status => ({
+            ...status,
+            recordBreakingMessage: "Wow, you set a new personal record!"
+        }));
+    };
+
     const handleRecordingEnd = async(positiveOutcomeOrNot) => {
         let updatedCorrectInaRow = updateHighScore(positiveOutcomeOrNot);
 
@@ -113,19 +131,13 @@ const useFlashCardUpdate = () => {
         if (userId) {
             let AllTimeHighScore = await getUserAllTimeHighScore(userId);
             if (currentHighGreaterThanAllTimeHigh(updatedCorrectInaRow, AllTimeHighScore)) {
-                console.log("congrats, you broke your record!!")
                 await setAllTimeHighScore(userId, updatedCorrectInaRow);
+                createCelebratoryMessage();
             };
         }
 
-        setStatus(status =>({
-            ...status,
-            message: "Record",
-            isRecording: false,
-            isCorrect: positiveOutcomeOrNot,
-            correctInARow: updatedCorrectInaRow
-        }));
-};
+        updateStateAfterRecordingEnds(positiveOutcomeOrNot, updatedCorrectInaRow);
+    };
 
     const { note, image } = getCardData();
     window.localStorage.setItem("oldNote", note);
