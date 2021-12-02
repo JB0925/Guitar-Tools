@@ -129,8 +129,8 @@ const useFlashCardUpdate = () => {
 
         const userId = userIdIsPresent();
         if (userId) {
-            let AllTimeHighScore = await getUserAllTimeHighScore(userId);
-            if (currentHighGreaterThanAllTimeHigh(updatedCorrectInaRow, AllTimeHighScore)) {
+            let allTimeHighScore = await getUserAllTimeHighScore(userId);
+            if (currentHighGreaterThanAllTimeHigh(updatedCorrectInaRow, allTimeHighScore)) {
                 await setAllTimeHighScore(userId, updatedCorrectInaRow);
                 createCelebratoryMessage();
             };
