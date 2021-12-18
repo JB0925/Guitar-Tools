@@ -5,10 +5,14 @@ import Tuner from "./Tuner";
 import Metronome from "./Metronome";
 import LoginAndSignUpForm from "./LoginAndSignUpForm";
 import GuitaristInfo from "./Guitarist";
+import HomePage from "./Home";
 
 const Routes = ({ updateLoginState, errorMessage }) => {
     return (
         <Switch>
+            <Route exact path="/">
+                <HomePage />
+            </Route>
             <Route exact path="/register">
                 <LoginAndSignUpForm 
                     typeOfForm="register" 
@@ -38,9 +42,9 @@ const Routes = ({ updateLoginState, errorMessage }) => {
                 <GuitaristInfo />
             </Route>
             <Route exact path="/logout">
-                <Redirect to="/flashcards" />
+                <Redirect to="/" />
             </Route>
-            <Redirect to="/flashcards" />
+            <Redirect to="/" />
         </Switch>
     );
 };

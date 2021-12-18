@@ -1,21 +1,20 @@
 import React from "react";
 import { useHistory } from "react-router";
-import { useNavbarToggle, useLoginToggle } from "../Hooks/useNavbarHook";
+import { useNavbarToggle } from "../Hooks/useNavbarHook";
 import { NavLink } from "react-router-dom";
-import Guitar from "../guitarnobg.png";
+import Guitar from "../guitars/guitarnobg.png";
 import "../CSS/Navbar.css";
 
 const Navbar = ({ isLoggedIn, updateLogin }) => {
     const history = useHistory();
     const [handleClick, burgerButton] = useNavbarToggle();
-    // const [isLoggedIn, toggleLoggedInStatus] = useLoginToggle();
 
     const handleLogout = () => {
         if (JSON.parse(window.localStorage.getItem("userId"))) {
             window.localStorage.removeItem("userId");
             
             updateLogin();
-            return history.push("/flashcards");
+            return history.push("/");
         }
     };
     

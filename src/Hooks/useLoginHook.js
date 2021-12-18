@@ -38,7 +38,10 @@ const useLoginUpdate = () => {
             isLoggedIn: true,
             errorMessage: ""
         }));
-
+        
+        const pathname = window.location.pathname;
+        if (pathname === "/") return history.push("/");
+        
         return history.push("/flashcards");
     };
 
