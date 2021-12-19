@@ -35,7 +35,8 @@ const RecordButton = () => {
             <button className="recordbtn"
                     style={message === "Recording" ? styleObject : null}
                     disabled={isRecording}
-                    onClick={handleClick}>
+                    onClick={handleClick}
+                    data-testid="recordBtn">
                     {message}
             </button>
         </div>

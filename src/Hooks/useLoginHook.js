@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router";
 
 const useLoginUpdate = () => {
@@ -32,7 +32,7 @@ const useLoginUpdate = () => {
         },3000);
     };
 
-    const handleLogin = () => {
+    const handleLogin = useCallback(() => {
         setLoginState(loginState => ({
             ...loginState,
             isLoggedIn: true,
@@ -43,7 +43,7 @@ const useLoginUpdate = () => {
         if (pathname === "/") return history.push("/");
         
         return history.push("/flashcards");
-    };
+    },[history]);
 
     const handleLogout = (newErrorMessage = "") => {
         setLoginState(loginState => ({
@@ -103,7 +103,7 @@ const useLoginUpdate = () => {
             }
         };
         alreadyLoggedIn();
-    },[]);
+    },[handleLogin]);
 
     const { errorMessage, isLoggedIn } = loginState;
 

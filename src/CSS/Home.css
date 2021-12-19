@@ -1,6 +1,59 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.spacer {
+    padding-bottom: 700px;
+}
+
 .Home {
     display: flex;
     width: 100%;
+    margin-bottom: 200px;
+}
+
+.appInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.display-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 8px;
+    margin: 6px;
+    flex-basis: 23%;
+    height: 450px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.display p {
+    width: 60%;
+    text-align: center;
+}
+
+.display h3 {
+    font-size: 2rem;
 }
 
 .information {
@@ -76,8 +129,6 @@
 
 .pic1 {
     border: 15px solid white;
-    /* width: 300px;
-    height: 330px; */
     transform: rotate(5deg);
     margin-left: 50px;
     position: absolute;
@@ -114,12 +165,27 @@
     width: 250px;
 }
 
+#noreg {
+    margin-top: -25px;
+}
+
+@media screen and (max-width: 1024px) {
+    .spacer {
+        padding-bottom: 800px;
+    }
+}
+
 @media screen and ( max-width : 900px) {
     .Home {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        margin-top: 10%;
+        margin-top: 50%;
+        margin-bottom: 500px;
+    }
+
+    .spacer {
+        padding-bottom: 800px;
     }
 
     .information, .photos {
@@ -135,9 +201,34 @@
     }
 }
 
+@media screen and (max-width: 823px) {
+    .spacer {
+        padding-bottom: 1100px;
+    }
+}
+
 @media screen and (max-width: 768px) {
+    .Home {
+        margin-top: 80%;
+        margin-bottom: 400px;
+        margin-left: -15%;
+    }
+
+    .spacer {
+        padding-bottom: 1000px;
+    }
+
+    .display {
+        flex-basis: 45%;
+    }
     .information {
         margin-left: 15%;
+    }
+}
+
+@media screen and (max-width: 736px) {
+    .spacer {
+        padding-bottom: 1200px;
     }
 }
 
@@ -173,6 +264,38 @@
 
     .pic3 {
         right: 5%;
+    }
+
+    .display {
+        flex-basis: 45%;
+    }
+
+    .spacer {
+        padding-bottom: 1000px;
+    }
+
+    .Home {
+        margin-bottom: 300px;
+    }
+}
+
+@media screen and (max-width: 667px) {
+    .spacer {
+        padding-bottom: 1300px;
+    }
+
+    .Home {
+        margin-left: 4%;
+    }
+}
+
+@media screen and (max-width:  640px) {
+    .spacer {
+        padding-bottom: 1300px;
+    }
+
+    .Home {
+        margin-left: 4%;
     }
 }
 
@@ -220,6 +343,18 @@
     .pic1, .pic2, .pic3 {
         border: 10px solid white;
     }
+
+    .display {
+        flex-basis: 95%;
+    }
+
+    .spacer {
+        padding-bottom: 2000px;
+    }
+
+    .Home {
+        margin-left: 4%;
+    }
 }
 
 @media screen and (max-width: 400px) {
@@ -233,5 +368,45 @@
 
     .light {
         width: 80%;
+    }
+
+    .spacer {
+        padding-bottom: 1700px;
+    }
+
+    .display {
+        flex-basis: 95%;
+    }
+
+    .Home {
+        margin-top: 500px;
+        margin-bottom: 250px;
+        margin-left: 5%;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .spacer {
+        padding-bottom: 1200px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .spacer {
+        padding-bottom: 1700px;
+    }
+
+    .display {
+        flex-basis: 95%;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    .Home {
+        margin-left: -4%;
+    }
+
+    .Home h1 {
+        font-size: 2.2rem;
     }
 }

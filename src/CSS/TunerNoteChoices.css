@@ -4,6 +4,7 @@
     justify-content: space-between;
     width: 100%;
     margin-left: -2%;
+    flex-wrap: wrap;
 }
 
 .TunerNoteChoices-align {
@@ -14,4 +15,10 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+
+@media screen and (max-width: 330px) {
+    .TunerNoteChoices {
+        margin-left: 0;
+    }
 }

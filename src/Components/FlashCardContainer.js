@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useLayoutEffect, useRef } from "react";
 import "../CSS/FlashCardContainer.css";
 import FlashCard from "./FlashCard";
 import RecordButton from "./RecordButton";
@@ -24,18 +24,48 @@ import FlashCardContext from "../Contexts/FlashCardContext";
  */
 const FlashCardContainer = () => {
     const { isStarted, isRecording, correctInARow, note, image, successOrFail } = useContext(FlashCardContext);
+    const parentDiv = useRef();
+
+    useLayoutEffect(() => {
+      const scrollCardIntoView = () => window.scrollTo(0, document.body.scrollHeight);
+
+      const pushdownParent = () => {
+        if (isRecording && window.innerWidth <= 900) {
+          parentDiv.current.style.marginTop = "400px";
+          scrollCardIntoView();
+        } else {
+          parentDiv.current.style.marginTop = "200px";
+          parentDiv.current.style.marginLeft = "-3%";
+        };
+      };
+
+      pushdownParent();
+    },[isRecording]);
     
     return (
-        <div className="FlashCards">
-            <h1 className="highScore">Your High Score: {correctInARow}</h1>
-            {!isStarted || !isRecording ? 
-                <h1>Click to Start!</h1>
-                :
-                <FlashCard note={note} image={image} />
-            }
+        <div className="parent" ref={parentDiv}>
+            <div className="directions">
+                <h1>How to Use:</h1>
+                <p>All guitarists should be able to quickly find the notes on the fretboard.
+                    To play, click the "Record" button. A random card will be drawn. You will have
+                    five seconds to find and play the correct note. It works best if you play the note 
+                    once and let it ring.
+                </p>
+                <p><b>NOTE:</b> If you are logged in, your all time high score will be kept
+                    track of, and we will let you know when you break your personal record!
+                </p>
+            </div>
+            <div className="FlashCards">
+                <h1 className="highScore">Your High Score: {correctInARow}</h1>
+                {!isStarted || !isRecording ? 
+                    <h1>Click to Start!</h1>
+                    :
+                    <FlashCard note={note} image={image} />
+                }
 
-            {successOrFail}
-            <RecordButton />
+                {successOrFail}
+                <RecordButton />
+            </div>
         </div>
     );
 

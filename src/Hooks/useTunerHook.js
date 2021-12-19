@@ -74,7 +74,7 @@ const useTunerUpdate = () => {
      */
     const updatePitch = (analyserNode, detector, input, sampleRate) => {
         analyserNode.getFloatTimeDomainData(input);
-        const [pitch, clarity] = detector.findPitch(input, sampleRate);
+        const [pitch] = detector.findPitch(input, sampleRate);
         const noteName = ALL_NOTES[makeNoteName(pitch) % 12];
         const updatedNote = addOctaveIfNeeded(pitch, noteName);
         

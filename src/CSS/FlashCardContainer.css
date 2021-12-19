@@ -1,8 +1,31 @@
+.parent {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 100px;
+}
+
+.directions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 25px;
+    border: 1px solid white;
+    border-radius: 8px;
+    flex-basis: 35%;
+    line-height: 1.6rem;
+    margin-bottom: 5%;
+}
+
 .FlashCardContainer {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    flex-basis: 63%;
 }
 
 h1 {
@@ -12,5 +35,121 @@ h1 {
 .highScore {
     position: absolute;
     top: 80px;
-    left: 5px;
+    left: 11%;
 }
+
+@media screen and (max-width: 900px) {
+    .parent {
+        flex-direction: column;
+        margin-top: 400px;
+    }
+
+    .FlashCardContainer {
+        flex-basis: 90%;
+    }
+
+    .directions {
+        flex-basis: 35%;
+        width: 90%;
+    }
+
+    .highScore {
+        left: 17px;
+    }
+}
+
+@media screen and (max-width: 823px) {
+    .directions {
+        margin-top: 350px;
+    }
+
+    .highScore {
+        margin-left: 1%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .directions {
+        margin-top: 0;
+    }
+
+    .parent {
+        margin-top: 0;
+    }
+}
+
+@media screen and (max-width: 731px) {
+    .directions {
+        margin-top: 350px;
+    }
+
+    .highScore {
+        margin-left: 1%;
+    }
+}
+
+@media screen and (max-width: 667px) {
+    .parent {
+        padding-top: 400px;
+    }
+
+    .directions {
+        margin-top: 400px;
+    }
+}
+
+@media screen and (max-width: 653px) {
+    .directions {
+        margin-top: 350px;
+    }
+
+    .highScore {
+        margin-left: 1%;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .directions {
+        margin-top: 0;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .directions {
+        margin-top: 100px;
+    }
+}
+
+@media screen and (max-width: 411px) {
+    .directions {
+        margin-top: 100px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .parent {
+        padding-top: 50px;
+    }
+
+    .directions {
+        margin-top: 0;;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .directions {
+        margin-top: 100px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .parent {
+        padding-top: 250px;
+        margin-top: 250px;
+    }
+
+    .directions {
+        margin-top: 200px;
+    }
+}
+

@@ -1,16 +1,10 @@
 import React from "react";
 import '../CSS/App.css';
-import FlashCardContainer from './FlashCardContainer';
 import useFlashCardUpdate from "../Hooks/FlashCardHooks";
 import useLoginUpdate from "../Hooks/useLoginHook";
 import FlashCardContext from "../Contexts/FlashCardContext";
-import Tuner from "./Tuner";
-import Metronome from "./Metronome";
 import Routes from "./Routes";
-import Login from "./LoginAndSignUpForm";
 import Navbar from "./Navbar";
-import GuitaristInfo from "./Guitarist";
-import useNavbarToggle from "../Hooks/useNavbarHook";
 
 /**
  * The central processing for the guitar app. Uses a context provider to pass

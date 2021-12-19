@@ -1,3 +1,26 @@
+.parent2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 100px;
+}
+
+.directions2 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 25px;
+    border: 1px solid white;
+    border-radius: 8px;
+    flex-basis: 35%;
+    line-height: 1.6rem;
+    margin-bottom: 5%;
+    max-width: 90%;
+}
+
 .Metronome {
     display: flex;
     align-items: center;
@@ -11,6 +34,8 @@
                 rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, 
                 rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     max-width: 90%;
+    margin-top: -4%;
+    position: relative;
 }
 
 .Metronome-circle {
@@ -20,7 +45,7 @@
     border-radius: 50%;
     height: 250px;
     width: 250px;
-    border: 10px solid #3071A9;
+    border: 10px solid dodgerblue;
     background-color: lightgray;
 }
 
@@ -37,16 +62,31 @@
 
 @keyframes pulse-animation {
     0% {
-      box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 0 0 0px rgba(255, 255, 255, 0.8);
     }
     100% {
-      box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+      box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
     }
-  }
+}
+
+@media screen and (max-width: 1024px) {
+    .Metronome {
+        height: 495px;
+    }
+}
 
 @media screen and (max-width: 900px) {
+    .parent2 {
+        flex-direction: column;
+    }
+
+    .directions2 {
+        margin-top: 200px;
+        width: 95%;
+    }
+
     .Metronome {
-        width: 75%;
+        width: 100%;
     }
 
     .Metronome-btn {
@@ -54,8 +94,125 @@
     }
 }
 
+@media screen and (max-width: 823px) {
+    .parent2 {
+        padding-top: 200px;
+    }
+
+    .directions2 {
+        margin-top: 400px;
+        margin-bottom: 50px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .parent2 {
+        padding-top: 0;
+        margin-top: 50px;
+    }
+
+    .directions2 {
+        margin-top: 0;
+    }
+}
+
+@media screen and (max-width: 736px) {
+    .parent2 {
+        padding-top: 200px;
+    }
+
+    .directions2 {
+        margin-top: 400px;
+    }
+}
+
+@media screen and (max-width: 731px) {
+    .parent2 {
+        padding-top: 200px;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .parent2 {
+        padding-top: 300px;
+    }
+
+    .directions2 {
+        margin-top: 200px;
+    }
+}
+
+@media screen and (max-width: 653px) {
+    .parent2 {
+        margin-top: 300px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .parent2 {
+        padding-top: 50px;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    .parent2 {
+        margin-top: 500px;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .parent2 {
+        margin-top: 200px;
+    }
+}
+
 @media screen and (max-width: 500px) {
+    .Metronome {
+        width: 95%;
+    }
     .Metronome-btn {
         width: 75%;
+    }
+
+    .ToggleSwitch {
+        top: 0;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .parent2 {
+        padding-top: 50px;
+    }
+
+    .directions2 {
+        margin-top: 300px;
+    }
+}
+
+@media screen and (max-width: 411px) {
+    .parent2 {
+        padding-top: 50px;
+    }
+
+    .directions2 {
+        margin-top: 200px;
+        margin-bottom: 25px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .parent2 {
+        margin-top: 300px;
+    }
+    .Metronome {width: 100%;}
+}
+
+@media screen and (max-width: 330px) {
+    .parent2 {
+        margin-top: 600px;
+    }
+
+    .directions2 {
+        margin-bottom: 25px;
     }
 }

@@ -57,7 +57,7 @@ const useRecordButtonUpdate = (updatePitch, handleRecordingStart, handleRecordin
 
     const changePitch = (analyserNode, detector, input, sampleRate) => {
         analyserNode.getFloatTimeDomainData(input);
-        const [pitch, clarity] = detector.findPitch(input, sampleRate);
+        const [pitch] = detector.findPitch(input, sampleRate);
         noteName = ALL_NOTES[makeNoteName(pitch) % 12];
         const outcome = window.localStorage.getItem("oldNote") === noteName;
         updatePitch(noteName);

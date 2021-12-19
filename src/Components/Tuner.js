@@ -66,21 +66,39 @@ const Tuner = () => {
     const percentage = formatDistanceFromNote();
 
     return (
-        <div className="Tuner">
-            <div className="Tuner-info">
-                <h1>{noteName}</h1>
-                <h3>{percentage}</h3>
-                <h3>{determineNoteDifference()}</h3>
+        <div className="parent3">
+            <div className="directions3">
+                <h1>How to Use:</h1>
+                <p>It's important for your guitar to be in tune! This tuner supports a standard
+                    seven string guitar tuning, or B2 - E2 - A2 - D3 - G3 - B3 - E4. There is 
+                    also support for a Drop D six string tuning, with a low D2 tuning.
+                </p>
+                <p>
+                    To begin using, click "start". Click a note choice at the bottom (in order from low to high).
+                    As you tune, the lights will light up. When the light in the middle turns green, your string
+                    is in tune! 
+                </p>
+                <p>
+                    For the most optimal tuning, pay attention to the cents reading. Try to tune as close to 0.00 
+                    as possible. That number is the difference between your frequency and the optimal frequency.
+                </p>
             </div>
-            <div className="circles">
-                <TunerIndicator number={1} frequency={frequency} noteName={noteName} styleObject={styleObject} />
-                <TunerIndicator number={2} frequency={frequency} noteName={noteName} styleObject={styleObject} />
-                <TunerIndicator number={3} frequency={frequency} noteName={noteName} styleObject={styleObject} />
-                <TunerIndicator number={4} frequency={frequency} noteName={noteName} styleObject={styleObject} />
-                <TunerIndicator number={5} frequency={frequency} noteName={noteName} styleObject={styleObject} />
+            <div className="Tuner">
+                <div className="Tuner-info">
+                    <h1>{noteName}</h1>
+                    <h3>{percentage}</h3>
+                    <h3>{determineNoteDifference()}</h3>
+                </div>
+                <div className="circles">
+                    <TunerIndicator number={1} frequency={frequency} noteName={noteName} styleObject={styleObject} />
+                    <TunerIndicator number={2} frequency={frequency} noteName={noteName} styleObject={styleObject} />
+                    <TunerIndicator number={3} frequency={frequency} noteName={noteName} styleObject={styleObject} />
+                    <TunerIndicator number={4} frequency={frequency} noteName={noteName} styleObject={styleObject} />
+                    <TunerIndicator number={5} frequency={frequency} noteName={noteName} styleObject={styleObject} />
+                </div>
+                <TunerNoteChoices handleClick={evt => handleClick(evt, frequency)} checkboxChoices={initialChoicesState}/>
+                <button className="tunerButton" onClick={startTuner}>Start</button>
             </div>
-            <TunerNoteChoices handleClick={evt => handleClick(evt, frequency)} checkboxChoices={initialChoicesState}/>
-            <button className="tunerButton" onClick={startTuner}>Start</button>
         </div>
     );
 };

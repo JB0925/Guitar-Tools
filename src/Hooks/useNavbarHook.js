@@ -69,6 +69,10 @@ const useNavbarToggle = () => {
         });
 
         window.addEventListener("resize", changeDisplayOnResize);
+        return () => {
+          clearTimeout(firstTimer);
+          clearTimeout(secondTimer);
+        };
         
     },[isOpen]);
 
