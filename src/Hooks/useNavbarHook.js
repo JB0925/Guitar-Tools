@@ -8,6 +8,7 @@ const useNavbarToggle = () => {
     useEffect(() => {
         let firstTimer;
         let secondTimer;
+        let current = burgerButton.current;
         const pulldownMenu = document.querySelector(".pulldown");
         const pulldownUl = document.querySelector(".pulldown ul");
         const pulldownAnchorTags = document.querySelectorAll(".pulldown a");
@@ -46,6 +47,7 @@ const useNavbarToggle = () => {
         };
 
         const changeDisplayOnResize = () => {
+            if (!burgerButton.current) return;
             if (window.innerWidth >= 1150) {
                 burgerButton.current.style.display = "none";
 
@@ -70,10 +72,10 @@ const useNavbarToggle = () => {
 
         window.addEventListener("resize", changeDisplayOnResize);
         return () => {
-          clearTimeout(firstTimer);
-          clearTimeout(secondTimer);
+          current.removeEventListener('click', clickBurger);
+          window.removeEventListener('resize', changeDisplayOnResize);
         };
-        
+
     },[isOpen]);
 
 

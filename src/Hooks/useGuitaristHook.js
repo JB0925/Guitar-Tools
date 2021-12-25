@@ -40,6 +40,7 @@ const useGetGuitaristData = () => {
 
     const getGuitaristInfoFromApi = async(name) => {
         const response = await soundApi.getGuitaristInfo(name);
+
         if (response === ERROR_MESSAGE) {
             setBadRequestError(badRequestError => true);  
             resetGuitaristState();
@@ -82,7 +83,7 @@ const useGetGuitaristData = () => {
         return (
             <>
                 <div className="Guitarist-info">
-                    <h2>Name: {titleCaseName(name)}</h2>
+                    <h2 data-testid="playerName">Name: {titleCaseName(name)}</h2>
                     <h3><b>Birth Year:</b> {birthYear}</h3>
                     <h3><b>Death Year:</b> {deathYear}</h3>
                     <h3><b>Genre:</b> {genre}</h3>

@@ -35,7 +35,7 @@ const FlashCardContainer = () => {
           scrollCardIntoView();
         } else {
           parentDiv.current.style.marginTop = "200px";
-          parentDiv.current.style.marginLeft = "-3%";
+          parentDiv.current.style.marginLeft = "0";
         };
       };
 

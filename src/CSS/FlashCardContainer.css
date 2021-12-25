@@ -5,6 +5,7 @@
     flex-direction: row;
     width: 100%;
     margin-top: 100px;
+    z-index: 0;
 }
 
 .directions {
@@ -78,6 +79,12 @@ h1 {
     }
 }
 
+@media screen and (max-width: 736px) {
+    .directions {
+        margin-top: 200px;
+    }
+}
+
 @media screen and (max-width: 731px) {
     .directions {
         margin-top: 350px;
@@ -88,19 +95,25 @@ h1 {
     }
 }
 
+@media screen and (max-width: 720px) {
+    .directions {
+        margin-top: 100px;
+    }
+}
+
 @media screen and (max-width: 667px) {
     .parent {
         padding-top: 400px;
     }
 
     .directions {
-        margin-top: 400px;
+        margin-top: -100px;
     }
 }
 
 @media screen and (max-width: 653px) {
     .directions {
-        margin-top: 350px;
+        margin-top: 0px;
     }
 
     .highScore {
@@ -108,21 +121,37 @@ h1 {
     }
 }
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 640px) {
     .directions {
         margin-top: 0;
     }
 }
 
+@media screen and (max-width: 568px) {
+    .directions {
+        margin-top: 25px;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .directions {
+        margin-top: -300px;
+    }
+}
+
 @media screen and (max-width: 414px) {
     .directions {
-        margin-top: 100px;
+        margin-top: -400px;
     }
 }
 
 @media screen and (max-width: 411px) {
     .directions {
-        margin-top: 100px;
+        margin-top: -300px;
+    }
+
+    .parent {
+        margin-top: -200px;
     }
 }
 
@@ -132,7 +161,7 @@ h1 {
     }
 
     .directions {
-        margin-top: 0;;
+        margin-top: 50px;
     }
 }
 

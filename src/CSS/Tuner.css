@@ -105,6 +105,13 @@
     }
 }
 
+@media screen and (max-width: 812px) {
+    .parent3 {
+        padding-top: 600px;
+        margin-top: 150px;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .parent3 {
         padding-top: 0;
@@ -133,6 +140,12 @@
 @media screen and (max-width: 720px) {
     .parent3 {
         margin-top: 0;
+    }
+}
+
+@media screen and (max-width: 667px) {
+    .parent3 {
+        margin-top: 400px;
     }
 }
 
@@ -215,6 +228,9 @@
 } 
 
 @media screen and (max-width: 280px) {
+    .parent3 {
+        padding-top: 600px;
+    }
     .circles i {
         margin-left: -10%;
         padding-right: 15px;

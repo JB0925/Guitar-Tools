@@ -23,15 +23,15 @@ const Navbar = ({ isLoggedIn, updateLogin }) => {
         <nav>
             <img src={Guitar} alt="guitar" />
             <h1>Guitar Tools</h1>
-            <i className="fas fa-bars" ref={burgerButton} onClick={handleClick}></i>
+            <i data-testid="burgerButton" className="fas fa-bars" ref={burgerButton} onClick={handleClick}></i>
             <ul id="visibleNavUl">
-                <NavLink to="/flashcards" activeClassName="active">Flash Cards</NavLink>
+                <NavLink data-testid="flashcardlink" to="/flashcards" activeClassName="active">Flash Cards</NavLink>
                 <NavLink to="/tuner" activeClassName="active">Tuner</NavLink>
                 <NavLink to="/metronome" activeClassName="active">Metronome</NavLink>
                 <NavLink to="/guitarists" activeClassName="active">Guitarists</NavLink>
                 <NavLink to="/logout" onClick={handleLogout}>Logout</NavLink>
             </ul>
-            <div className="pulldown">
+            <div data-testid="pulldownMenu" className="pulldown">
                 <ul>
                     <NavLink to="/flashcards" activeClassName="active">Flash Cards</NavLink>
                     <NavLink to="/tuner" activeClassName="active">Tuner</NavLink>
@@ -45,7 +45,7 @@ const Navbar = ({ isLoggedIn, updateLogin }) => {
         <nav>
             <img src={Guitar} alt="guitar" />
             <h1>Guitar Tools</h1>
-            <i className="fas fa-bars" ref={burgerButton} onClick={handleClick}></i>
+            <i data-testid="burgerButton" className="fas fa-bars" ref={burgerButton} onClick={handleClick}></i>
             <ul id="visibleNavUl">
                 <NavLink to="/flashcards" activeClassName="active">Flash Cards</NavLink>
                 <NavLink to="/tuner" activeClassName="active">Tuner</NavLink>
@@ -54,7 +54,7 @@ const Navbar = ({ isLoggedIn, updateLogin }) => {
                 <NavLink to="/login" activeClassName="active">Login</NavLink>
                 <NavLink to="/register" activeClassName="active">Register</NavLink>
             </ul>
-            <div className="pulldown">
+            <div data-testid="pulldownMenu" className="pulldown">
                 <ul>
                     <NavLink to="/flashcards" activeClassName="active">Flash Cards</NavLink>
                     <NavLink to="/tuner" activeClassName="active">Tuner</NavLink>

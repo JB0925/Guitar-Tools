@@ -98,7 +98,6 @@ const useTunerUpdate = () => {
      *        TunerIndicator component.
      */
     const changeColor = frequency => {
-        console.log(noteName)
         for (let freq of noteFrequencies) {
             if (freq[noteName]) {
                 

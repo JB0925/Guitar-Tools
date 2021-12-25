@@ -142,21 +142,27 @@
     }
 }
 
+@media screen and (max-width: 667px) {
+    .parent2 {
+        padding-top: 500px;
+    }
+}
+
 @media screen and (max-width: 653px) {
     .parent2 {
-        margin-top: 300px;
+        margin-top: 200px;
     }
 }
 
 @media screen and (max-width: 640px) {
     .parent2 {
-        padding-top: 50px;
+        padding-top: 350px;
     }
 }
 
 @media screen and (max-width: 568px) {
     .parent2 {
-        margin-top: 500px;
+        margin-top: 400px;
     }
 }
 

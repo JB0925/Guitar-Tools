@@ -5,7 +5,7 @@ const ToggleSwitch = ({ changeMeter }) => {
     return (
         <div className="ToggleSwitch">
             <label className="switch" htmlFor="slider">
-                <input type="checkbox" id="slider" onClick={changeMeter}/>
+                <input data-testid="toggle" type="checkbox" id="slider" onClick={changeMeter}/>
                 <div className="round"></div>
             </label>
         </div>
