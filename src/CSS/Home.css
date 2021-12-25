@@ -285,7 +285,7 @@
     }
 
     .Home {
-        margin-left: 4%;
+        margin-left: 0%;
     }
 }
 
@@ -295,7 +295,7 @@
     }
 
     .Home {
-        margin-left: 4%;
+        margin-left: 0%;
     }
 }
 
@@ -353,7 +353,7 @@
     }
 
     .Home {
-        margin-left: 4%;
+        margin-left: 0%;
     }
 }
 
@@ -381,7 +381,7 @@
     .Home {
         margin-top: 500px;
         margin-bottom: 250px;
-        margin-left: 5%;
+        margin-left: 0%;
     }
 }
 
@@ -403,7 +403,7 @@
 
 @media screen and (max-width: 280px) {
     .Home {
-        margin-left: -4%;
+        margin-left: 0%;
     }
 
     .Home h1 {

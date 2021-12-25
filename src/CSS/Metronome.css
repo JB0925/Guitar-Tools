@@ -166,6 +166,12 @@
     }
 }
 
+@media screen and (max-width: 559px) {
+    .parent2 {
+        margin-top: 0px;
+    }
+}
+
 @media screen and (max-width: 540px) {
     .parent2 {
         margin-top: 200px;
