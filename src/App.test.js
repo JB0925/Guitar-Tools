@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
+import React from "react";
 import axios from "axios";
-import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter, Route, Router } from 'react-router';
 import { createMemoryHistory } from "history";
 import App from './Components/App';
@@ -19,21 +19,6 @@ import ToggleSwitch from "./Components/ToggleSwitch";
 import Tuner from "./Components/Tuner";
 
 jest.mock("axios");
-
-
-// const mockGetUserMedia = jest.fn(async() => {
-//   return new Promise(resolve => resolve());
-// });
-
-// Object.defineProperty(global.navigator,
-//   "mediaDevices", {
-//     writable: true,
-//     start: jest.fn(),
-//     value: {
-//       getUserMedia: mockGetUserMedia
-//     }
-// });
-// global.navigator.mediaDevices.getUserMedia = mockGetUserMedia;
 
 
 beforeEach(() => {
@@ -214,7 +199,7 @@ describe("Login and Registration Form", () => {
         <Route path="/flashcards">Flashcards Page</Route>
       </MemoryRouter>
     );
-
+  
     expect(getByText("Sign Up For an Account")).toBeInTheDocument();
 
     const username = getByLabelText(/username/i);
@@ -234,7 +219,6 @@ describe("Login and Registration Form", () => {
       fireEvent.click(submitButton);
     });
     expect(updateLoginState).toHaveBeenCalledTimes(1);
-
   });
 
   it("renders the Form component and shows the user an error message on faulty registration", async() => {
