@@ -17,6 +17,7 @@ import Navbar from "./Components/Navbar";
 import RecordButton from "./Components/RecordButton";
 import ToggleSwitch from "./Components/ToggleSwitch";
 import Tuner from "./Components/Tuner";
+import Popup from "./Components/Popup";
 
 jest.mock("axios");
 
@@ -456,12 +457,19 @@ describe("Toggle component", () => {
 
 describe("Tuner component", () => {
   it("renders the Tuner component", () => {
-    const { getByText, getByTestId } = render(
+    const { getByText, getAllByTestId } = render(
       <Tuner />
     );
 
     expect(getByText("A2")).toBeInTheDocument();
-    const startButton = getByText("Start");
-    // fireEvent.click(startButton)
+    const [popup1, popup2] = getAllByTestId("popup");
+
+    // popup1 should be showing but not popup2 yet;
+    expect(popup1).toHaveStyle("display: block;");
+    expect(popup2).toHaveClass("hide");
+    
+    // change the display of the popup so that it shows
+    fireEvent.click(popup1);
+    expect(popup2).toHaveStyle("display: block;");
   });
 });

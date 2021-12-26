@@ -41,7 +41,7 @@ export default function Popup({ order, isShowing, updateOrder, message }) {
 
 
   return (
-    <div className="hide" onClick={hidePopup} ref={popupRef}>
+    <div className="hide" onClick={hidePopup} ref={popupRef} data-testid="popup">
         <p>{message}</p>
     </div>
   );
