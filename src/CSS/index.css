@@ -23,3 +23,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@media screen and (max-width: 900px) {
+  body {
+    padding-top: 75px;
+  }
+}

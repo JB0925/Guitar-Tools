@@ -11,6 +11,15 @@ const useNavbarToggle = () => {
         const pulldownUl = document.querySelector(".pulldown ul");
         const pulldownAnchorTags = document.querySelectorAll(".pulldown a");
 
+        const changePulldownTransitionOnScreenOrientation = () => {
+            if (window.screen.orientation.type === "landscape-primary" && window.innerWidth <= 900) {
+                pulldownMenu.style.paddingTop = "250px";
+                pulldownMenu.style.transition = "padding-top 400ms";
+            } else {
+                pulldownMenu.style.transition = "height 400ms";
+            }
+        };
+
         const openPulldownMenu = () => {
             burgerButton.current.className = "fas fa-times";
             pulldownMenu.style.display = "flex";
@@ -21,6 +30,7 @@ const useNavbarToggle = () => {
                 pulldownAnchorTags.forEach(tag => {
                     tag.style.display = "block";
                 });
+                changePulldownTransitionOnScreenOrientation();
             },100);
         };
 
@@ -32,6 +42,7 @@ const useNavbarToggle = () => {
                 pulldownAnchorTags.forEach(tag => {
                     tag.style.display = "none";
                 });
+                pulldownMenu.style.paddingTop = "0";
             },100);
         };
 

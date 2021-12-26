@@ -83,6 +83,7 @@ nav i {
     align-items: flex-start;
     justify-content: center;
     margin-left: -2.5%;
+    z-index: 10;
 }
 
 .pulldown ul a {

@@ -4,7 +4,7 @@
     justify-content: space-around;
     flex-direction: row;
     width: 100%;
-    margin-top: 100px;
+    /* margin-top: 100px; */
     z-index: 0;
 }
 
@@ -42,7 +42,7 @@ h1 {
 @media screen and (max-width: 900px) {
     .parent {
         flex-direction: column;
-        margin-top: 400px;
+        /* margin-top: 400px; */
     }
 
     .FlashCardContainer {
@@ -59,7 +59,25 @@ h1 {
     }
 }
 
-@media screen and (max-width: 823px) {
+@media screen and (orientation: landscape) {
+    body {
+        margin-top: 100px;
+    }
+
+    .pulldown {
+        overflow-y: auto;
+    }
+
+    .directions {
+        z-index: 0;
+    }
+
+    .highScore {
+        z-index: 0;
+    }
+}
+
+/* @media screen and (max-width: 823px) {
     .directions {
         margin-top: 350px;
     }
@@ -77,9 +95,9 @@ h1 {
     .parent {
         margin-top: 0;
     }
-}
+} */
 
-@media screen and (max-width: 736px) {
+/* @media screen and (max-width: 736px) {
     .directions {
         margin-top: 200px;
     }
@@ -93,9 +111,9 @@ h1 {
     .highScore {
         margin-left: 1%;
     }
-}
+} */
 
-@media screen and (max-width: 720px) {
+/* @media screen and (max-width: 720px) {
     .directions {
         margin-top: 100px;
     }
@@ -131,9 +149,9 @@ h1 {
     .directions {
         margin-top: 25px;
     }
-}
+} */
 
-@media screen and (max-width: 540px) {
+/* @media screen and (max-width: 540px) {
     .directions {
         margin-top: -300px;
     }
@@ -180,5 +198,5 @@ h1 {
     .directions {
         margin-top: 200px;
     }
-}
+} */
 

@@ -4,7 +4,7 @@
     justify-content: space-around;
     flex-direction: row;
     width: 100%;
-    margin-top: 100px;
+    /* margin-top: 100px; */
 }
 
 .directions2 {
@@ -69,6 +69,21 @@
     }
 }
 
+
+@media screen and (orientation: landscape) {
+    .parent2 {
+        margin-top: 200px;
+    }
+
+    .pulldown {
+        overflow-y: auto;
+    }
+
+    .directions2 {
+        z-index: 0;
+    }
+}
+
 @media screen and (max-width: 1024px) {
     .Metronome {
         height: 495px;
@@ -78,6 +93,7 @@
 @media screen and (max-width: 900px) {
     .parent2 {
         flex-direction: column;
+        margin-top: 200px;
     }
 
     .directions2 {
@@ -94,7 +110,41 @@
     }
 }
 
-@media screen and (max-width: 823px) {
+@media screen and (max-width: 768px) {
+    .parent2 {
+        flex-direction: column;
+        margin-top: -200px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .parent2 {
+        flex-direction: column;
+        margin-top: 200px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .parent2 {
+        flex-direction: column;
+        margin-top: 400px;
+    }
+
+    .directions2 {
+        margin-top: 200px;
+        width: 95%;
+    }
+
+    .Metronome {
+        width: 100%;
+    }
+
+    .Metronome-btn {
+        width: 50%;
+    }
+}
+
+/* @media screen and (max-width: 823px) {
     .parent2 {
         padding-top: 200px;
     }
@@ -227,4 +277,4 @@
     .directions2 {
         margin-bottom: 25px;
     }
-}
+} */
