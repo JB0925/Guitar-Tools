@@ -6,7 +6,7 @@ import ToggleSwitch from "./ToggleSwitch";
 
 const Metronome = () => {
     const [isPlaying, tempo, circleDiv, handleClick, handleChange, changeMeter] = useUpdateMetronome();
-
+    
     const btnText = isPlaying ? "Stop" : "Play";
     return (
         <div className="parent2">
