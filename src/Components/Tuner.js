@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "../CSS/Tuner.css";
 import useTunerUpdate from "../Hooks/useTunerHook";
 import TunerIndicator from "./TunerIndicators";
 import TunerNoteChoices from "./TunerNoteChoices";
+import Popup from "./Popup";
 
 /** Tuner Component
  * 
@@ -62,8 +63,13 @@ const Tuner = () => {
     let [noteName, frequency, initialChoicesState, determineNoteDifference, 
         handleClick, changeColor, formatDistanceFromNote, startTuner] = useTunerUpdate();
     
+    const [popupCount, setPopupCount] = useState(1);
+    
     const styleObject = changeColor(frequency);
     const percentage = formatDistanceFromNote();
+
+    const message1 = "These will light up as you tune to let you know how close you are";
+    const message2 = "Select one of the choices below to get more information about a specific string as you tune.";
 
     return (
         <div className="parent3">
@@ -90,6 +96,8 @@ const Tuner = () => {
                     <h3>{determineNoteDifference()}</h3>
                 </div>
                 <div className="circles">
+                    <Popup order={1} isShowing={popupCount === 1} updateOrder={setPopupCount} message={message1} />
+                    <Popup order={2} isShowing={popupCount === 2} updateOrder={setPopupCount} message={message2} />
                     <TunerIndicator number={1} frequency={frequency} noteName={noteName} styleObject={styleObject} />
                     <TunerIndicator number={2} frequency={frequency} noteName={noteName} styleObject={styleObject} />
                     <TunerIndicator number={3} frequency={frequency} noteName={noteName} styleObject={styleObject} />
