@@ -73,8 +73,8 @@ const useGetGuitaristData = () => {
         return <img src={photo} alt={name} />
     };
 
-    const formatParagraphs = text => {
-        return text.split("\n").filter(pg => pg !== "")
+    const formatParagraphs = paragraphs => {
+        return paragraphs.split("\n").filter(pg => pg !== "")
         .map(pg => <p key={uuid()}>{pg}</p>)
     };
 
