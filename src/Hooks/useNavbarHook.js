@@ -6,8 +6,6 @@ const useNavbarToggle = () => {
     const burgerButton = useRef();
 
     useEffect(() => {
-        let firstTimer;
-        let secondTimer;
         let current = burgerButton.current;
         const pulldownMenu = document.querySelector(".pulldown");
         const pulldownUl = document.querySelector(".pulldown ul");
@@ -17,7 +15,7 @@ const useNavbarToggle = () => {
             burgerButton.current.className = "fas fa-times";
             pulldownMenu.style.display = "flex";
 
-            firstTimer = setTimeout(() => {
+            setTimeout(() => {
                 pulldownMenu.style.height = "70vh";
                 pulldownUl.style.display = "flex";
                 pulldownAnchorTags.forEach(tag => {
@@ -28,7 +26,7 @@ const useNavbarToggle = () => {
 
         const closePulldownMenu = () => {
             burgerButton.current.className = "fas fa-bars";
-            secondTimer = setTimeout(() => {
+            setTimeout(() => {
                 pulldownMenu.style.height = "0px";
                 pulldownUl.style.display = "none";
                 pulldownAnchorTags.forEach(tag => {
