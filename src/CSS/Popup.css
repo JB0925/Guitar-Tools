@@ -18,6 +18,7 @@
   opacity: 1;
   background-color: rgba(255, 99, 71, 0.6);
   color: white;
+  cursor: pointer;
 }
 
 .show2 { 
@@ -32,6 +33,7 @@
   background-color: rgba(255, 99, 71, 0.7);
   color: white;
   opacity: 1;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 667px) {
