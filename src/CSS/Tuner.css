@@ -4,7 +4,7 @@
     justify-content: space-around;
     flex-direction: row;
     width: 100%;
-    margin-top: 100px;
+    /* margin-top: 100px; */
     padding-bottom: 25px;
 }
 
@@ -71,7 +71,25 @@
     margin-top: 10px;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (orientation: landscape) {
+    .parent3 {
+        margin-top: 300px;
+    }
+
+    .pulldown {
+        overflow-y: auto;
+    }
+
+    .directions3 {
+        z-index: 0;
+    }
+
+    .highScore {
+        z-index: 0;
+    }
+}
+
+/* @media screen and (max-width: 1024px) {
     .parent3 {
         margin-top: 300px;
     }
@@ -79,9 +97,13 @@
     .Metronome {
         height: 495px;
     }
-}
+} */
 
 @media screen and (max-width: 900px) {
+    .parent3 {
+        margin-top: 400px;
+    }
+
     .parent3 {
         flex-direction: column;
         width: 95%;
@@ -96,7 +118,84 @@
     }
 }
 
-@media screen and (max-width: 823px) {
+@media screen and (max-width: 768px) {
+    .parent3 {
+        margin-top: 0px;
+    }
+
+    .parent3 {
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .Metronome {
+        width: 95%;
+    }
+
+    .Metronome-btn {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .parent3 {
+        margin-top: 400px;
+    }
+
+    .parent3 {
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .Metronome {
+        width: 95%;
+    }
+
+    .Metronome-btn {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .parent3 {
+        margin-top: 600px;
+    }
+
+    .parent3 {
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .Metronome {
+        width: 95%;
+    }
+
+    .Metronome-btn {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .parent3 {
+        margin-top: 700px;
+    }
+
+    .parent3 {
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .Metronome {
+        width: 95%;
+    }
+
+    .Metronome-btn {
+        width: 50%;
+    }
+}
+
+
+/* }@media screen and (max-width: 823px) {
     .parent3 {
         margin-top: 600px;
     }
@@ -225,8 +324,8 @@
 
     .directions {
         margin-bottom: 25px;
-    }
-} 
+    }  
+} */
 
 @media screen and (max-width: 280px) {
     .parent3 {
