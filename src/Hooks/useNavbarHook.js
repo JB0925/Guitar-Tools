@@ -17,7 +17,12 @@ const useNavbarToggle = () => {
                 pulldownMenu.style.transition = "padding-top 400ms";
             } else {
                 pulldownMenu.style.transition = "height 400ms";
-            }
+                if (window.innerWidth === 412 && window.innerHeight === 915) {
+                  pulldownUl.style.marginTop = "-300px";
+                } else {
+                    pulldownUl.style.marginTop = "-150px";
+                }
+            };
         };
 
         const openPulldownMenu = () => {
@@ -25,7 +30,7 @@ const useNavbarToggle = () => {
             pulldownMenu.style.display = "flex";
 
             setTimeout(() => {
-                pulldownMenu.style.height = "70vh";
+                pulldownMenu.style.height = "100vh";
                 pulldownUl.style.display = "flex";
                 pulldownAnchorTags.forEach(tag => {
                     tag.style.display = "block";
