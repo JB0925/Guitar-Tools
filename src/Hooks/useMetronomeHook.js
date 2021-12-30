@@ -1,10 +1,18 @@
 import { useState, useRef } from "react";
-import Click from "../Sounds/click.wav";
-import Accent from "../Sounds/metronomeup.wav";
+import Click from "../Sounds/click.mp3";
+import Accent from "../Sounds/metronomeup.mp3";
 
 const useUpdateMetronome = () => {
-    const click = new Audio(Click);
-    const accent = new Audio(Accent);
+    // instantiating a new AudioContext improves performance in mobile browsers
+    // and in Safari in general. Prior to adding this, everything worked great
+    // in desktop Chrome and Firefox, but Safari and any mobile browsers would
+    // not play the audio. 
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    
+    /* eslint-disable no-unused-vars */
+    const audioCtx = new AudioContext();
+    /* eslint-enable no-unused-vars */
+
     const circleDiv = useRef();
     const initialMetronomeState = {
         tempo: 100,
@@ -49,6 +57,9 @@ const useUpdateMetronome = () => {
     };
 
     const createTimer = (currentCount, currentTempo, meterValue) => {
+        const click = new Audio(Click);
+        const accent = new Audio(Accent);
+        
         return setInterval(() => {
             if (currentCount === 1) accent.play();
             else click.play();

@@ -26,7 +26,8 @@ const Metronome = () => {
                 <div data-testid="displayCircle" className="Metronome-circle" ref={circleDiv}>
                     <h1>{tempo} BPM</h1>
                 </div>
-                <button type="button" data-testid="metronomeStartButton" className="Metronome-btn" onClick={handleClick}>{btnText}</button>
+                <audio preload="auto"></audio>
+                <button type="button" data-testid="metronomeStartButton" className="Metronome-btn" onClickCapture={handleClick}>{btnText}</button>
                 <BPMSlider handleChange={handleChange} tempo={tempo} />
             </div>
         </div>
