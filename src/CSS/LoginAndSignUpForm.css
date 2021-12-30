@@ -4,6 +4,7 @@
     justify-content: center;
     flex-direction: column;
     width: 100%;
+    padding-top: 100px;
 }
 
 .LoginAndSignUpForm h3 {
@@ -29,6 +30,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    height: 100vh;
 }
 
 .LoginAndSignUpForm h1 {
@@ -62,7 +64,17 @@ input {
     cursor: pointer;
 }
 
+@media screen and (max-width: 1024px) and (max-height: 600px) {
+    .container {
+        margin-top: 400px;
+    }
+}
+
 @media screen and (max-width: 800px) {
+    .LoginAndSignUpForm {
+        padding-top: 0;
+    }
+
     input,
     .LoginAndSignUpForm button {
         width: 100%;
@@ -75,10 +87,20 @@ input {
     label {
         margin-left: 0;
     }
+
+    .container {
+        margin-top: 0;
+    }
 }
 
 @media screen and (max-width: 600px) {
     .LoginAndSignUpForm form {
         width: 95%;
+    }
+}
+
+@media screen and (orientation: landscape) {
+    .LoginAndSignUpForm {
+        margin-top: -400px;
     }
 }

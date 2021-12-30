@@ -12,15 +12,15 @@ const useNavbarToggle = () => {
         const pulldownAnchorTags = document.querySelectorAll(".pulldown a");
 
         const changePulldownTransitionOnScreenOrientation = () => {
-            if (window.screen.orientation.type === "landscape-primary" && window.innerWidth <= 900) {
-                pulldownMenu.style.paddingTop = "250px";
+            if (window.matchMedia("(orientation: landscape)") && window.innerWidth <= 900) {
+                pulldownMenu.style.paddingTop = "100px";
                 pulldownMenu.style.transition = "padding-top 400ms";
             } else {
                 pulldownMenu.style.transition = "height 400ms";
                 if (window.innerWidth === 412 && window.innerHeight === 915) {
                   pulldownUl.style.marginTop = "-300px";
                 } else {
-                    pulldownUl.style.marginTop = "-150px";
+                    pulldownUl.style.marginTop = "-200px";
                 }
             };
         };

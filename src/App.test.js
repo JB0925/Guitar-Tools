@@ -61,12 +61,12 @@ describe("FlashCardContainer is rendered", () => {
       handleRecordingEnd: jest.fn().mockImplementation(() => Promise.resolve())
      };
      
-    const { queryAllByText, getByText } = render(
+    const { queryAllByText, getByText, getByTestId } = render(
       <FlashCardContext.Provider value={value}>
         <FlashCardContainer />
       </FlashCardContext.Provider>
     );
-
+    
     expect(queryAllByText("Click to Start!")[0]).toBeInTheDocument();
     expect(getByText("How to Use:")).toBeInTheDocument();
   });

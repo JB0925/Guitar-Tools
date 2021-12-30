@@ -8,8 +8,8 @@ const LoginAndSignUpForm = ({ typeOfForm, header, updateLoginState, errorMessage
 
     return (
         <div className="LoginAndSignUpForm">
-            <h1>{header}</h1>
             <div className="container">
+            <h1>{header}</h1>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="username">Username</label>
                     <input

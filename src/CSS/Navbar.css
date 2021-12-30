@@ -112,3 +112,68 @@ nav i {
         margin-left: 0;
     }
 }
+
+@media screen and (max-width: 428px) and (max-height: 926px) {
+    .pulldown ul {
+        margin-top: -400px;
+    }
+}
+
+@media screen and (max-height: 926px) and (orientation: landscape) {
+    .pulldown {
+        padding-top: 125px;
+    }
+    .pulldown ul a {
+        font-size: 1rem;
+    }
+
+    .pulldown ul {
+        margin-top: -10px;
+    }
+}
+
+@media screen and (max-height: 915px) and (orientation: landscape) {
+    .pulldown {
+        padding-top: 125px;
+    }
+    .pulldown ul a {
+        font-size: 1rem;
+    }
+
+    .pulldown ul {
+        margin-top: -10px;
+    }
+}
+
+@media screen and (max-height: 883px) and (orientation: landscape) {
+    .pulldown {
+        padding-top: -25px;
+    }
+    .pulldown ul a {
+        font-size: 1rem;
+    }
+
+    .pulldown ul {
+        margin-top: -150px;
+    }
+}
+
+@media screen and (max-height: 760px) and (orientation: landscape) {
+    .pulldown {
+        padding-top: 25px;
+    }
+    .pulldown ul a {
+        font-size: 1rem;
+        padding-bottom: 0px;
+    }
+
+    .pulldown ul {
+        margin-top: -200px;
+    }
+}
+
+@media screen and (max-width: 568px) and (max-height: 320px) {
+    .pulldown ul a {
+        padding-bottom: 0px;
+    }
+}
