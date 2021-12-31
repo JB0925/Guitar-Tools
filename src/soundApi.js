@@ -7,7 +7,7 @@ import axios from "axios";
  * within the frontend code.
  */
 
-const BASE_URL = process.env.BASE_URL || "http://127.0.0.1:3001/";
+const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL || "http://127.0.0.1:3001/";
 
 class soundApi {
     static async registerNewUser({ username, password }) {
@@ -17,7 +17,7 @@ class soundApi {
         };
 
         try {
-            const response = await axios.post(`${BASE_URL}auth/signup`, data);
+            const response = await axios.post(`${REACT_APP_BASE_URL}auth/signup`, data);
             const { token, id } = response.data;
             window.localStorage.setItem("token", JSON.stringify(token));
             return { token, id };
@@ -34,7 +34,7 @@ class soundApi {
         };
 
         try {
-            const response = await axios.post(`${BASE_URL}auth/login`, data);
+            const response = await axios.post(`${REACT_APP_BASE_URL}auth/login`, data);
             const { token, id } = response.data;
             window.localStorage.setItem("token", JSON.stringify(token));
             return { token, id };
@@ -46,7 +46,7 @@ class soundApi {
 
     static async getGuitaristInfo(name) {
         try {
-            const response = await axios.get(`${BASE_URL}guitarist/${name}`);
+            const response = await axios.get(`${REACT_APP_BASE_URL}guitarist/${name}`);
             return response.data;
         } catch (error) {
             const { message } = error.response.data.error;
@@ -56,7 +56,7 @@ class soundApi {
 
     static async getUserHighScore(id) {
         try {
-            const response = await axios.get(`${BASE_URL}users/${id}`);
+            const response = await axios.get(`${REACT_APP_BASE_URL}users/${id}`);
             const { highScore } = response.data;
             return highScore;
         } catch (error) {
@@ -68,7 +68,7 @@ class soundApi {
     static async setUserHighScore({ id, newHighScore }) {
         const data = { newHighScore };
         try {
-            const response = await axios.post(`${BASE_URL}users/${id}`, data);
+            const response = await axios.post(`${REACT_APP_BASE_URL}users/${id}`, data);
             const { highScore } = response.data;
             return highScore;
         } catch (error) {
