@@ -75,6 +75,10 @@
 }
 
 @media screen and (max-width: 900px) {
+    .Guitarist {
+        top: 0;
+    }
+
     .info {
         flex-direction: column-reverse;
         align-items: center;
@@ -105,6 +109,10 @@
     }
 
     .info img {
+        width: 90%;
+    }
+
+    .formDiv {
         width: 90%;
     }
 }
