@@ -23,7 +23,7 @@ function App() {
   const [
     message, isStarted, isRecording, thePitch, correctInARow, note, image,
     successOrFail, updatePitch, handleRecordingStart, handleRecordingEnd,
-    parentDiv, currentMarginTop
+    parentDiv
   ] = useFlashCardUpdate();
 
   const [updateLoginState, errorMessage, isLoggedIn, handleLogout] = useLoginUpdate();
@@ -32,7 +32,7 @@ function App() {
     message, isStarted, isRecording, thePitch, correctInARow,
     note, image, successOrFail, 
     updatePitch, handleRecordingStart, handleRecordingEnd,
-    parentDiv, currentMarginTop
+    parentDiv
   };
 
   return (

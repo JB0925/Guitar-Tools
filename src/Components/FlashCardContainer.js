@@ -28,6 +28,7 @@ const FlashCardContainer = () => {
     return (
         <div className="parent" ref={parentDiv}>
             <div className="directions">
+                <h1 className="highScore">Your High Score: {correctInARow}</h1>
                 <h1>How to Use:</h1>
                 <p>All guitarists should be able to quickly find the notes on the fretboard.
                     To play, click the "Record" button. A random card will be drawn. You will have
@@ -39,7 +40,6 @@ const FlashCardContainer = () => {
                 </p>
             </div>
             <div className="FlashCards">
-                <h1 className="highScore">Your High Score: {correctInARow}</h1>
                 {!isStarted || !isRecording ? 
                     <h1>Click to Start!</h1>
                     :

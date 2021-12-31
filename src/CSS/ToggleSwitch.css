@@ -55,8 +55,8 @@ label {
     transform: translateX(26px);
   }
 
-  @media screen and (max-width: 360px) {
+  /* @media screen and (max-width: 360px) {
     .parent {
       padding-top: 100px;
     }
-  }
+  } */
