@@ -1,6 +1,7 @@
-import React from "react";
-import { useHistory } from "react-router";
+import React, { useRef, useEffect } from "react";
+import { useHistory, useLocation } from "react-router";
 import { useNavbarToggle } from "../Hooks/useNavbarHook";
+import { gsap } from "gsap/all";
 import { NavLink } from "react-router-dom";
 import Guitar from "../guitars/guitarnobg.png";
 import "../CSS/Navbar.css";
@@ -8,6 +9,13 @@ import "../CSS/Navbar.css";
 const Navbar = ({ isLoggedIn, updateLogin }) => {
     const history = useHistory();
     const [handleClick, burgerButton] = useNavbarToggle();
+    const imgRef = useRef();
+    const location = useLocation();
+    
+    // add animation to guitar image that reruns when the pathname changes
+    useEffect(() => {
+      gsap.to(imgRef.current, { rotation: "+=360" });
+    },[location]);
 
     const handleLogout = () => {
         if (JSON.parse(window.localStorage.getItem("userId"))) {
@@ -21,7 +29,7 @@ const Navbar = ({ isLoggedIn, updateLogin }) => {
     return (
         isLoggedIn ?
         <nav>
-            <img src={Guitar} alt="guitar" />
+            <img src={Guitar} alt="guitar" ref={imgRef} />
             <h1>Guitar Tools</h1>
             <i data-testid="burgerButton" className="fas fa-bars" ref={burgerButton} onClick={handleClick}></i>
             <ul id="visibleNavUl">
@@ -43,7 +51,7 @@ const Navbar = ({ isLoggedIn, updateLogin }) => {
         </nav>
         :
         <nav>
-            <img src={Guitar} alt="guitar" />
+            <img src={Guitar} alt="guitar" ref={imgRef} />
             <h1>Guitar Tools</h1>
             <i data-testid="burgerButton" className="fas fa-bars" ref={burgerButton} onClick={handleClick}></i>
             <ul id="visibleNavUl">

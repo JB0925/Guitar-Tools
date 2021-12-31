@@ -22,7 +22,8 @@ import Navbar from "./Navbar";
 function App() {
   const [
     message, isStarted, isRecording, thePitch, correctInARow, note, image,
-    successOrFail, updatePitch, handleRecordingStart, handleRecordingEnd
+    successOrFail, updatePitch, handleRecordingStart, handleRecordingEnd,
+    parentDiv, currentMarginTop
   ] = useFlashCardUpdate();
 
   const [updateLoginState, errorMessage, isLoggedIn, handleLogout] = useLoginUpdate();
@@ -30,13 +31,14 @@ function App() {
   const value = {
     message, isStarted, isRecording, thePitch, correctInARow,
     note, image, successOrFail, 
-    updatePitch, handleRecordingStart, handleRecordingEnd
+    updatePitch, handleRecordingStart, handleRecordingEnd,
+    parentDiv, currentMarginTop
   };
 
   return (
     <FlashCardContext.Provider value={value}>
       <div className="App">
-        <Navbar isLoggedIn={isLoggedIn} updateLogin={handleLogout}/>
+        <Navbar isLoggedIn={isLoggedIn} updateLogin={handleLogout} />
         <Routes updateLoginState={updateLoginState} errorMessage={errorMessage} />
       </div>
     </FlashCardContext.Provider>

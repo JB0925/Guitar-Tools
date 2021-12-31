@@ -71,7 +71,7 @@
     margin-top: 10px;
 }
 
-@media screen and (orientation: landscape) {
+@media screen and (orientation: landscape) and (max-width: 900px) {
     .parent3 {
         margin-top: 300px;
     }
@@ -89,15 +89,17 @@
     }
 }
 
-/* @media screen and (max-width: 1024px) {
+@media screen and (max-width: 1024px) and (max-height: 600px) {
     .parent3 {
-        margin-top: 300px;
+        margin-top: 150px;
     }
+}
 
-    .Metronome {
-        height: 495px;
+@media screen and (max-width: 915px) and (max-height: 412px) {
+    .parent3 {
+        margin-top: 400px;
     }
-} */
+}
 
 @media screen and (max-width: 900px) {
     .parent3 {
@@ -115,6 +117,18 @@
 
     .Metronome-btn {
         width: 50%;
+    }
+}
+
+@media screen and (max-width: 810px) and (max-height: 1080px) {
+    .parent3 {
+        margin-top: 150px;
+    }
+}
+
+@media screen and (max-width: 800px) and (max-height: 1280px) {
+    .parent3 {
+        margin-top: -100px;
     }
 }
 
@@ -153,6 +167,12 @@
 
     .Metronome-btn {
         width: 50%;
+    }
+}
+
+@media screen and (max-width: 375px) and (max-height: 667px) {
+    .parent3 {
+        margin-top: 600px;
     }
 }
 

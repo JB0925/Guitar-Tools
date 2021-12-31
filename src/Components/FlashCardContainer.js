@@ -1,4 +1,4 @@
-import React, { useContext, useLayoutEffect, useRef } from "react";
+import React, { useContext } from "react";
 import "../CSS/FlashCardContainer.css";
 import FlashCard from "./FlashCard";
 import RecordButton from "./RecordButton";
@@ -23,24 +23,7 @@ import FlashCardContext from "../Contexts/FlashCardContext";
  * Returns: A container for the RecordButton and FlashCard components
  */
 const FlashCardContainer = () => {
-    const { isStarted, isRecording, correctInARow, note, image, successOrFail } = useContext(FlashCardContext);
-    const parentDiv = useRef();
-
-    useLayoutEffect(() => {
-      const scrollCardIntoView = () => window.scrollTo(0, document.body.scrollHeight);
-
-      const pushdownParent = () => {
-        if (isRecording && window.innerWidth <= 900) {
-          parentDiv.current.style.marginTop = "400px";
-          scrollCardIntoView();
-        } else {
-          parentDiv.current.style.marginTop = "200px";
-          parentDiv.current.style.marginLeft = "0";
-        };
-      };
-
-      pushdownParent();
-    },[isRecording]);
+    const { isStarted, isRecording, correctInARow, note, image, successOrFail, parentDiv } = useContext(FlashCardContext);
     
     return (
         <div className="parent" ref={parentDiv}>

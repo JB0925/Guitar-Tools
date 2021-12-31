@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useLayoutEffect, useRef } from "react";
+import { useLocation } from "react-router";
 import A from "../FlashCardImages/A.jpg";
 import Asharp from "../FlashCardImages/A#.png";
 import B from "../FlashCardImages/B.png";
@@ -42,6 +43,8 @@ import soundApi from "../soundApi";
  * 
  */
 const useFlashCardUpdate = () => {
+    const location = useLocation();
+    const SMALL_SCREEN_BREAKPOINT = 900;
     const noteImages = [
         {note: "A", image: A}, {note: "A#", image: Asharp},
         {note: "B", image: B}, {note: "C", image: C},
@@ -60,9 +63,38 @@ const useFlashCardUpdate = () => {
         correctInARow: 0,
         recordBreakingMessage: null
     };
-
+    
+    const [currentMarginTop, setCurrentMarginTop] = useState(null);
     const [status, setStatus] = useState(initalStatusState);
     const { message, isStarted, isRecording, thePitch, isCorrect, correctInARow } = status;
+
+    const parentDiv = useRef();
+    
+    // An effect that pushes the card into view and restores the original margin afterward
+    useLayoutEffect(() => {
+      const scrollCardIntoView = () => window.scrollTo(0, document.body.scrollHeight);
+
+      const pushdownParent = () => {
+        if (!isStarted && location.pathname === "/flashcards") {
+            setCurrentMarginTop(parseInt(getComputedStyle(parentDiv.current).marginTop));
+        };
+
+        if (isRecording && window.innerWidth <= SMALL_SCREEN_BREAKPOINT) {
+          parentDiv.current.style.marginTop = "400px";
+          scrollCardIntoView();
+        };
+      };
+
+      const pushParentBackUp = () => {
+        if (!isRecording && currentMarginTop) {
+          parentDiv.current.style.marginTop = `${currentMarginTop}px`;
+        };
+      };
+
+      pushdownParent();
+      pushParentBackUp();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[isRecording]);
 
     const userIdIsPresent = () => {
         return JSON.parse(window.localStorage.getItem("userId"));
@@ -154,7 +186,8 @@ const useFlashCardUpdate = () => {
     
     return [
         message, isStarted, isRecording, thePitch, correctInARow, note, image,
-        successOrFail, updatePitch, handleRecordingStart, handleRecordingEnd
+        successOrFail, updatePitch, handleRecordingStart, handleRecordingEnd,
+        parentDiv, currentMarginTop
     ];
 };
 
