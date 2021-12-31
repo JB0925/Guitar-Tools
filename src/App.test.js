@@ -17,7 +17,6 @@ import Navbar from "./Components/Navbar";
 import RecordButton from "./Components/RecordButton";
 import ToggleSwitch from "./Components/ToggleSwitch";
 import Tuner from "./Components/Tuner";
-import Popup from "./Components/Popup";
 
 jest.mock("axios");
 

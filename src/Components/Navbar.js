@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { useHistory, useLocation } from "react-router";
 import { useNavbarToggle } from "../Hooks/useNavbarHook";
-import { gsap } from "gsap/all";
+import { gsap } from "gsap/";
 import { NavLink } from "react-router-dom";
 import Guitar from "../guitars/guitarnobg.png";
 import "../CSS/Navbar.css";
