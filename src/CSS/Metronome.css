@@ -85,9 +85,27 @@
     }
 }
 
+@media screen and (max-width: 1080px) and (max-height: 810px) {
+    .parent2 {
+        margin-top: 0px;
+    }
+}
+
 @media screen and (max-width: 1024px) {
     .Metronome {
         height: 495px;
+    }
+}
+
+@media screen and (max-width: 926px) and (max-height: 428px) {
+    .parent2 {
+        margin-top: 200px;
+    }
+}
+
+@media screen and (max-width: 915px) and (max-height: 412px) {
+    .parent2 {
+        margin-top: 200px;
     }
 }
 
@@ -111,6 +129,18 @@
     }
 }
 
+@media screen and (max-width: 800px) and (max-height: 1280px) {
+    .parent2 {
+        margin-top: -500px;
+    }
+}
+
+@media screen and (max-width: 810px) and (max-height: 1080px) {
+    .parent2 {
+        margin-top: -300px;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .parent2 {
         flex-direction: column;
@@ -125,9 +155,69 @@
     }
 }
 
+@media screen and (max-width: 720px) and (max-height: 540px) {
+    .parent2 {
+        margin-top: 0px;
+    }
+}
+
+@media screen and (max-width: 667px) and (max-height: 375px) {
+    .parent2 {
+        margin-top: 200px;
+    }
+}
+
+@media screen and (max-width: 653px) and (max-height: 280px) {
+    .parent2 {
+        margin-top: 250px;
+    }
+}
+
 @media screen and (max-width: 568px) and (max-height: 320px) {
     .parent2 {
         margin-top: 300px;
+    }
+}
+
+@media screen and (max-width: 428px) and (max-height: 926px) {
+    .parent2 {
+        margin-top: 0px;
+    }
+}
+
+@media screen and (max-width: 414px) and (max-height: 896px) {
+    .parent2 {
+        margin-top: 0px;
+    }
+}
+
+@media screen and (max-width: 412px) and (max-height: 915px) {
+    .parent2 {
+        margin-top: 0px;
+    }
+}
+
+@media screen and (max-width: 375px) and (max-height: 812px) {
+    .parent2 {
+        margin-top: 100px;
+    }
+}
+
+@media screen and (max-width: 375px) and (max-height: 667px) {
+    .parent2 {
+        margin-top: 250px;
+    }
+}
+
+@media screen and (max-width: 360px) and (max-height: 800px) {
+    .parent2 {
+        margin-top: 100px;
+    }
+}
+
+@media screen and (max-width: 360px) and (max-height: 760px) {
+    .parent2 {
+        margin-top: 100px;
     }
 }
 
