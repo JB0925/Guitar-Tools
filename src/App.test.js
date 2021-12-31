@@ -17,6 +17,7 @@ import Navbar from "./Components/Navbar";
 import RecordButton from "./Components/RecordButton";
 import ToggleSwitch from "./Components/ToggleSwitch";
 import Tuner from "./Components/Tuner";
+import Popup from "./Components/Popup";
 
 jest.mock("axios");
 
@@ -470,5 +471,15 @@ describe("Tuner component", () => {
     // change the display of the popup so that it shows
     fireEvent.click(popup1);
     expect(popup2).toHaveStyle("display: block;");
+  });
+});
+
+describe("Popup component", () => {
+  it("renders the Popup component", () => {
+    /* eslint-disable no-unused-vars */
+    const popupSpy = jest.spyOn(React, "useRef").mockReturnValueOnce({ current: { style: null }});
+    /* eslint-enable no-unused-vars */
+    render(<Popup order={1} isShowing={true} updateOrder={jest.fn()} message="Hi" />);
+    expect(screen.getByText("Hi")).toBeInTheDocument();
   });
 });
