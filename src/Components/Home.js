@@ -1,5 +1,6 @@
 import React, { useRef, useLayoutEffect } from "react";
 import { gsap, Bounce } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "react-router-dom";
 import "../CSS/Home.css";
 import Strat from "..//guitars/guitar1.png";
@@ -21,16 +22,18 @@ import GuitarPlayer from "../LandingPagePictures/guitarist.png";
  * 
  */
 const HomePage = () => {
+  gsap.registerPlugin(ScrollTrigger)
   const infoRef = useRef();
   const pic1Ref = useRef();
   const pic2Ref = useRef();
   const pic3Ref = useRef();
-
+  
+  // Using gsap and useRef to trigger some animations.
   useLayoutEffect(() => {
     gsap.fromTo(infoRef.current, { opacity: 0 }, { opacity: 1, duration: 3 });
-    gsap.fromTo(pic1Ref.current, { y: 500 }, { y: 0, duration: 1 });
-    gsap.fromTo(pic2Ref.current, { y: -500 }, { y: 0, duration: 1 }, "<20%");
-    gsap.fromTo(pic3Ref.current, { x: 500 }, { x: 0, ease: Bounce.easeOut, duration: 2 });
+    gsap.fromTo(pic1Ref.current, { y: 500 }, { y: 0, duration: 1, scrollTrigger: ".photos"});
+    gsap.fromTo(pic2Ref.current, { y: -window.innerHeight, visibility: "hidden" }, { y: 0, visibility: "visible", duration: 1, scrollTrigger: ".photos"}, "<20%");
+    gsap.fromTo(pic3Ref.current, { x: 500 }, { x: 0, ease: Bounce.easeOut, duration: 2, scrollTrigger: ".photos"}, "<10%");
   },[]);
 
   return (

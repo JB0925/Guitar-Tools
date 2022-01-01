@@ -21,9 +21,11 @@
     vertical-align: middle;
 }
 
-.TunerNoteChoices-align input,
-.TunerNoteChoices-align label {
-    width: 30px;
+@media screen and (max-width: 1150px) {
+    .TunerNoteChoices-align input,
+    .TunerNoteChoices-align label {
+        width: 30px;
+    }
 }
 
 @media screen and (max-width: 330px) {

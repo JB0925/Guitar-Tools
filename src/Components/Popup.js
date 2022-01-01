@@ -26,6 +26,8 @@ export default function Popup({ order, isShowing, updateOrder, message }) {
   // Each popup only shows if "isShowing" is true, and "order"
   // for each is a number. When it's number is called (state updated),
   // it will fade in after the previous popup fades out.
+  // We also check to make sure the component is mounted before we
+  // try to run the code.
   const hidePopup = () => {
     updateOrder(actualOrder => actualOrder + 1);
   };
@@ -33,25 +35,32 @@ export default function Popup({ order, isShowing, updateOrder, message }) {
   useLayoutEffect(() => {
     let timer1;
     let timer2; 
+    let mounted = true;
+
     const handleDisplay = () => {
       if (!isShowing) {
         timer1 = setTimeout(() => {
-            popupRef.current.style.opacity = "0";
-            popupRef.current.style.transition = "opacity 600ms";
+            if (mounted) {
+              popupRef.current.style.opacity = "0";
+              popupRef.current.style.transition = "opacity 600ms";
+            };
           },100);
         
       } else {
           popupRef.current.className = `show${order}`;
           popupRef.current.style.display = "block";
           timer2 = setTimeout(() => {
-            popupRef.current.style.opacity = "1";
-            popupRef.current.style.transition = "opacity 1000ms";
+            if (mounted) {
+              popupRef.current.style.opacity = "1";
+              popupRef.current.style.transition = "opacity 1000ms";
+            }
           }, 500);
       }
     };
 
     handleDisplay();
     return () => {
+      mounted = false;
       if (order === 1) clearTimeout(timer1);
       else clearTimeout(timer2);
     };
