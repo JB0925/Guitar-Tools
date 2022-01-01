@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useRef, useLayoutEffect } from "react";
+import { gsap, Bounce } from "gsap";
 import { Link } from "react-router-dom";
 import "../CSS/Home.css";
 import Strat from "..//guitars/guitar1.png";
@@ -20,11 +21,23 @@ import GuitarPlayer from "../LandingPagePictures/guitarist.png";
  * 
  */
 const HomePage = () => {
+  const infoRef = useRef();
+  const pic1Ref = useRef();
+  const pic2Ref = useRef();
+  const pic3Ref = useRef();
+
+  useLayoutEffect(() => {
+    gsap.fromTo(infoRef.current, { opacity: 0 }, { opacity: 1, duration: 3 });
+    gsap.fromTo(pic1Ref.current, { y: 500 }, { y: 0, duration: 1 });
+    gsap.fromTo(pic2Ref.current, { y: -500 }, { y: 0, duration: 1 }, "<20%");
+    gsap.fromTo(pic3Ref.current, { x: 500 }, { x: 0, ease: Bounce.easeOut, duration: 2 });
+  },[]);
+
   return (
     <div className="container">
         <div className="spacer"></div>
         <div className="Home">
-            <div className="information">
+            <div className="information" ref={infoRef}>
                 <p className="dark">Ready to practice guitar?</p>
                 <h1>Welcome to Guitar Tools!</h1>
                 <p className="light">Guitar Tools is your home for your guitar practice routine essentials.</p>
@@ -35,13 +48,13 @@ const HomePage = () => {
                 </div>
             </div>
             <div className="photos">
-                <div className="pic1">
+                <div className="pic1" ref={pic1Ref}>
                     <img src={Strat} alt="Stratocaster" />
                 </div>
-                <div className="pic2">
+                <div className="pic2" ref={pic2Ref}>
                     <img src={Player} alt="Player" />
                 </div>
-                <div className="pic3">
+                <div className="pic3" ref={pic3Ref}>
                     <img src={OnStage} alt="On Stage" />
                 </div>
             </div>
