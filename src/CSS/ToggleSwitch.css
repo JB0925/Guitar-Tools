@@ -2,14 +2,14 @@
 
 .ToggleSwitch {
     position: absolute;
-    top: 10px;
     right: 10px;
+    top: 10px;
 }
 
 label {
-    width: 60px;
     height: 34px;
     position: relative;
+    width: 60px;
 }
 
 .switch {
@@ -25,6 +25,7 @@ label {
 
 .round {
   background-color: #ccc;
+  border-radius: 34px;
   bottom: 0;
   cursor: pointer;
   left: 0;
@@ -32,11 +33,11 @@ label {
   right: 0;
   top: 0;
   transition: .4s;
-  border-radius: 34px;
 }
 
 .round:before {
     background-color: #fff;
+    border-radius: 50%;
     bottom: 4px;
     content: "";
     height: 26px;
@@ -44,19 +45,12 @@ label {
     position: absolute;
     transition: .4s;
     width: 26px;
-    border-radius: 50%;
-  }
+}
 
   input:checked + .round {
     background-color: dodgerblue;
-  }
+}
   
   input:checked + .round:before {
     transform: translateX(26px);
-  }
-
-  /* @media screen and (max-width: 360px) {
-    .parent {
-      padding-top: 100px;
-    }
-  } */
+}

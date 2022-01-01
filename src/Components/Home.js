@@ -9,6 +9,16 @@ import MetronomeImage from "../LandingPagePictures/metronome.png";
 import TunerImage from "../LandingPagePictures/tuner.png";
 import GuitarPlayer from "../LandingPagePictures/guitarist.png";
 
+/**
+ * HomePage Component
+ * 
+ * Purpose: A landing page for the app.
+ * 
+ * Params: None
+ * 
+ * Returns: A landing page for the app.
+ * 
+ */
 const HomePage = () => {
   return (
     <div className="container">

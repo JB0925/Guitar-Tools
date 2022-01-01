@@ -1,6 +1,22 @@
 import { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router";
 
+/**
+ * useLoginUpdate Hook
+ * 
+ * Purpose: Handling user login and logout actions.
+ * 
+ * Params: None
+ * 
+ * Returns:
+ *      - updateLoginState and handleLogout, two appropriately
+ *          name functions
+ *      - errorMessage: If an error has occurred, let the user 
+ *          know with an error message
+ *      - isLoggedIn: A boolean, passed to the navbar to let it
+ *          know which links to show
+ * 
+ */
 const useLoginUpdate = () => {
     const history = useHistory();
 

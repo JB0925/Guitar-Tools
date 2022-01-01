@@ -2,6 +2,21 @@ import React from "react";
 import "../CSS/Guitarist.css";
 import useGetGuitaristData from "../Hooks/useGuitaristHook";
 
+
+/**
+ * Guitarist Component
+ * 
+ * Purpose: Allows the user to get information about a particular 
+ *          guitarist or musician for an API.
+ * 
+ * Params: None
+ * 
+ * Returns:
+ *    A component that allows a user to submit a form and 
+ *    see information and pictures of a guitarist they 
+ *    are interested in.
+ * 
+ */
 const GuitaristInfo = () => {
     const [
             handleSubmit, handleChange, 

@@ -2,6 +2,20 @@ import React from "react";
 import "../CSS/LoginAndSignUpForm.css";
 import useFormUpdate from "../Hooks/useFormHook";
 
+/**
+ * Form Component
+ * 
+ * Purpose: Allows a user to register and / or sign in
+ * 
+ * Params: 
+ *      -typeOfForm: determines whether the form is used for login or registration
+ *      -header: Pass in a custom header, such as "Login to Our App" or "Sign Up Today!"
+ *      -updateLoginState: A function that sets the user's login data in state
+ *      -errorMessage: If a user tries to login and is unsuccessful, an error message will show.
+ * 
+ * Returns: A flexible form that can be used for either Login or Registration to the app.
+ * 
+ */
 const LoginAndSignUpForm = ({ typeOfForm, header, updateLoginState, errorMessage }) => {
     const [formData, makeStyleObjectForErrorMessage, handleChange, handleSubmit] = useFormUpdate(typeOfForm, updateLoginState);
     const styleObject = makeStyleObjectForErrorMessage(errorMessage);

@@ -1,42 +1,43 @@
 .hide {
-  height: 150px;
-  width: 150px;
-  opacity: 0;
   display: none;
+  height: 150px;
+  opacity: 0;
+  width: 150px;
 }
   
 .show1 {
-  height: 150px;
-  width: 150px;
-  display: block;
-  position: absolute;
-  border: 1px solid tomato;
-  text-align: center;
+  background-color: rgba(255, 99, 71, 0.6);
   border-radius: 8px;
-  top: -100px;
+  border: 1px solid tomato;
+  color: white;
+  cursor: pointer;
+  display: block;
+  height: 150px;
   left: 0;
   opacity: 1;
-  background-color: rgba(255, 99, 71, 0.6);
-  color: white;
-  cursor: pointer;
+  position: absolute;
+  text-align: center;
+  top: -100px;
+  width: 150px;
 }
 
-.show2 { 
-  height: 150px;
-  width: 150px;
-  display: block;
-  position: absolute;
-  border: 1px solid tomato;
-  border-radius: 8px;
-  top: 0;
-  right: 0;
-  background-color: rgba(255, 99, 71, 0.7);
-  color: white;
-  opacity: 1;
-  cursor: pointer;
-}
+.show2 {
+    background-color: rgba(255, 99, 71, 0.7);
+    border-radius: 8px;
+    border: 1px solid tomato;
+    color: white;
+    cursor: pointer;
+    display: block;
+    height: 150px;
+    opacity: 1;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 150px;
+  }
 
 @media screen and (max-width: 667px) {
+  
   .show1,
   .show2 {
     background-color: rgba(255, 99, 71, 1);

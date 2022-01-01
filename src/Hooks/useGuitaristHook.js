@@ -2,6 +2,20 @@ import { useState } from "react";
 import soundApi from "../soundApi";
 import { v4 as uuid } from "uuid";
 
+/**
+ * useGetGuitaristData Hook
+ * 
+ * Purpose: Get guitarist data on user form submission, set it in state,
+ *          and package it neatly for rendering.
+ * 
+ * Params: None
+ * 
+ * Returns: The formState, along with a "handleChange" and "handleSubmit"
+ *          method used for handling the simple form.
+ *          Returns several helper functions that are called to neatly 
+ *          format the data that is retrieved from the backend API.
+ * 
+ */
 const useGetGuitaristData = () => {
     const ERROR_MESSAGE = "Sorry, we could not find this musician.";
 

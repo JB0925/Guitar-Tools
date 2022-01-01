@@ -52,6 +52,8 @@ import Popup from "./Popup";
  *      - TunerNoteChoices: A div of eight checkboxes. These allow the user to select one at a time and more detailed information in the DOM as to
  *                          whether or not they are higher or lower than their desired note. This is particularly useful when the guitar is badly out
  *                          of tune, and the user may not have much experience with tuning.
+ *      - Popup: A simple div that gives the user more information about some of the Tuner's child components. Fades in and out
+ *               on click.
  * 
  * Returns:
  *      - Returns a guitar tuner that gives the user feedback as to whether or not they are close to the selected note by way of text ("High" and "Low")

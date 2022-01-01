@@ -4,6 +4,18 @@ import useUpdateMetronome from "../Hooks/useMetronomeHook";
 import BPMSlider from "./BPMSlider";
 import ToggleSwitch from "./ToggleSwitch";
 
+/**
+ * Metronome Component
+ * 
+ * Purpose: Create a metronome that a guitarist can practice with by keeping a sense of time.
+ * 
+ * Props: None
+ * 
+ * Returns: A metronome that can be controlled via a range input / slider, an "increment"
+ *          button, a "decrement" button, and a toggle switch that allows the user to 
+ *          switch between 4/4 and 6/8 time.
+ * 
+ */
 const Metronome = () => {
     const [isPlaying, tempo, circleDiv, handleClick, handleChange, changeMeter] = useUpdateMetronome();
     

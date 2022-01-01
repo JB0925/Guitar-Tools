@@ -1,5 +1,21 @@
 import { useState, useRef, useEffect } from "react";
 
+/** 
+ * useNavbarToggle Hook
+ * 
+ * Purpose: Allow the user to open and close the navbar on smaller screens
+ * 
+ * Params: None
+ * 
+ * Returns: functions that allow the navbar pulldown to be open and closed, 
+ *             as well as trigger event listeners on the "Burger button" menu,
+ *             as well as links in the pulldown menu.
+ *          Also returns "isLoggedIn", a boolean that is passed to the navbar
+ *          to let it know which links to show the user, and a function that 
+ *          is used to handle a user logging out by clicking on the log out 
+ *          link.
+ * 
+ */
 const useNavbarToggle = () => {
     const [isOpen, setIsOpen] = useState(false);
 

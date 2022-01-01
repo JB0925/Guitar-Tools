@@ -3,6 +3,11 @@ import "../CSS/TunerNoteChoices.css";
 
 /** TunerNoteChoices Component
  * 
+ * Purpose: Allows the user the opportunity to get more information about a specific string they are
+ *          tuning, particularly whether they are higher or lower than their desired value. An
+ *          inexperienced player may not know these things and, if not aware, may snap a string by
+ *          tightening it too much.
+ * 
  * Params:
  *      - handleClick: (type: Function): Used to update state in the parent Tuner component. This state 
  *                                       controls the checkboxes and makes it so that only one checkbox

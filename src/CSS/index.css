@@ -8,23 +8,25 @@ html {
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  color: white;
-  overflow-x: hidden;
-  font-family: 'Raleway', sans-serif;
-  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
   background-color: #0c162e;
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  padding: 0;
 }
 
 code {
+  
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
 @media screen and (max-width: 900px) {
+  
   body {
     padding-top: 75px;
   }

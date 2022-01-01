@@ -2,6 +2,29 @@ import { useState, useRef } from "react";
 import Click from "../Sounds/click.mp3";
 import Accent from "../Sounds/metronomeup.mp3";
 
+/**
+ * useUpdateMetronome Hook
+ * 
+ * Purpose: Provides the state and functions used to allow the user to
+ *            click the "Start" button, hear sound, and update the
+ *            metronome's values.
+ * 
+ * Params: None
+ * 
+ * Returns: isPlaying: a boolean that is used to set the text of the start button.
+ *          Also used in conditionals to "tell" the metronome how to handle state
+ *          changes, etc.
+ * 
+ *          tempo: The current BPM value to pass into the metronome's round circle div
+ *                  and BPMSlider component
+ *          circleDiv: a useRef ref used to control the style of the circular div that 
+ *              shows the user the current BPM value.
+ * 
+ *          handleClick, handleChange, changeMeter: All are passed to child components
+ *              or buttons and are used to update the BPM value or update the Meter
+ *              value in state.
+ * 
+ */
 const useUpdateMetronome = () => {
     // instantiating a new AudioContext improves performance in mobile browsers
     // and in Safari in general. Prior to adding this, everything worked great

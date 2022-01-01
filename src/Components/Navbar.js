@@ -6,6 +6,23 @@ import { NavLink } from "react-router-dom";
 import Guitar from "../guitars/guitarnobg.png";
 import "../CSS/Navbar.css";
 
+/**
+ * Navbar Component
+ * 
+ * Purpose: Return a fixed navbar that allows the user to click links to
+ *          navigate the app.
+ * 
+ * Params:
+ *      -isLoggedIn: tells the navbar to show the links for a logged in user,
+ *                   or the links for user who is not registered / logged in.
+ *      -updateLogin: In this case, updateLogin is used to log out a user
+ *                    when they click the "Log Out" link.
+ * 
+ * Returns: A navbar that will show different links depending on whether they
+ *          are logged in or not. In addition, on smaller screens, the navbar turns
+ *          into a pulldown menu.
+ * 
+ */
 const Navbar = ({ isLoggedIn, updateLogin }) => {
     const history = useHistory();
     const [handleClick, burgerButton] = useNavbarToggle();

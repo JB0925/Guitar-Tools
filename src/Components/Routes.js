@@ -7,6 +7,17 @@ import LoginAndSignUpForm from "./LoginAndSignUpForm";
 import GuitaristInfo from "./Guitarist";
 import HomePage from "./Home";
 
+/**
+ * Routes Component
+ * 
+ * Purpose: Allow for server side rendering of the main features of the app.
+ * 
+ * Params: 
+ *      -updateLoginState: used in the Login and Signup forms to login and logout the user
+ *      -errorMessage: if an error occurs in the forms, it lets the user know what happened.
+ * 
+ * Returns: A Tree of routes, handled by React Router
+ */
 const Routes = ({ updateLoginState, errorMessage }) => {
     return (
         <Switch>

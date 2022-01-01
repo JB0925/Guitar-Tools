@@ -1,6 +1,19 @@
 import React from "react";
 import "../CSS/BPMSlider.css";
 
+/** 
+ * BPMSlider Component
+ * 
+ * Props:
+ *    - handleChange: updates the Metronome's BPM in state
+ *    - tempo: the current metronome value; sets the slider's position
+ * 
+ * Returns:
+ *    - A range input that is used to change the speed of the Metronome,
+ *      as well as two buttons that can be used to update the Metronome
+ *      one at a time.
+ * 
+ */
 const BPMSlider = ({ handleChange, tempo }) => {
     return (
         <div className="BPMSlider">

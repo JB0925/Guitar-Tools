@@ -1,23 +1,24 @@
 .TunerNoteChoices {
-    display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    margin-left: -2%;
+    display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
+    margin-left: -2%;
+    width: 100%;
 }
 
 .TunerNoteChoices-align {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-    display: flex;
     align-items: center;
-    justify-content: center;
+    display: flex;
     flex-direction: column;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    text-align: center;
 }
 
 @media screen and (max-width: 330px) {
+    
     .TunerNoteChoices {
         margin-left: 0;
     }
