@@ -1,10 +1,48 @@
-# Getting Started with Create React App
+# Guitar Tools
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# About Guitar Tools
 
-In the project directory, you can run:
+As someone who has been playing guitar for roughly twenty five years, Guitar Tools
+is a passion project. This app includes four main components:
+- An interactive flashcard game where the user clicks, sees a card, tries to play the correct
+  note, and will be given feedback on whether or not they played the correct note.
+- A metronome, used to improve a guitarist's sense of timing and playing speed (if desired)
+- A tuner, used to, well...tune the guitar. :)
+- An "info getter" where the user can ask for information about a particular guitarist or musician
+  and get information about them.
+
+There are also Login and Register components, but neither are required to use the app, and were
+create more to demonstrate capability. If you do decide to login, and you play the flashcard game, 
+we keep track of your high score and will let you know when you break it!
+
+If you would like to login to the app, you can do so with the following:
+    username: testuser
+    password: password
+
+As a utility app, this app primarily has a frontend focus, but there is a backend API written as well!
+
+The front end was written with React.js, CSS3, and HTML5 / JSX.
+The back end was written with Node.js, Express.js, and Postgres.
+
+# How To Install and/or View Guitar Tools
+
+The easiest way to view Guitar Tools is to head over to
+[Guitar Tools on Heroku](https://agile-beyond-78774.herokuapp.com/)
+
+Alternatively, to clone this project, you can paste the following line in your terminal:
+`git clone git@github.com:JB0925/Guitar-Tools.git` for the frontend,
+and `git clone git@github.com:JB0925/Guitar-Tools-Backend.git` for the backend.
+
+Following that, use `npm install` to install all dependencies in both repos separately.
+
+Below are some available scripts that you can use to run Guitar Tools in 
+development mode, as well as run the tests I wrote for Guitar Tools:
+
+## Available Scripts Front End
+
+In the project's root directory, you can run:
 
 ### `npm start`
 
@@ -12,59 +50,30 @@ Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This will allow you to run the tests that I wrote for this
+front end application using React Testing Library / Jest.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Available Scripts Back End
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+In the project's root directory, you can run one of two commands:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `node server.js` 
+### `nodemon server.js`
 
-### `npm run eject`
+If you choose to run the second one, be sure to install Nodemon using `npm i nodemon`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Runs the app in the development mode.\
+Opens the API on port 3001 [http://localhost:3001](http://localhost:3001).
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `npm test --runInBand`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Launches the test runner in the interactive watch mode.\
+This will allow you to run the tests that I wrote for the
+backend using Jest.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Thank you for taking the time to check out Guitar Tools!
