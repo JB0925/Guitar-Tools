@@ -31,7 +31,7 @@ const LoginAndSignUpForm = ({ typeOfForm, header, updateLoginState, errorMessage
                         placeholder="Enter Your Password"
                         required
                     />
-                    <button type="submit">Submit</button>
+                    <button type="submit" onClick={handleSubmit}>Submit</button>
                 </form>
             </div>
             <h3 style={styleObject}>{errorMessage}</h3>
