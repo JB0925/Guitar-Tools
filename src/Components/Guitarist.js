@@ -24,7 +24,7 @@ const GuitaristInfo = () => {
                         value={formData}
                         required
                     />
-                    <button className="searchButton">Submit</button>
+                    <button className="searchButton" type="submit" onClick={handleSubmit}>Submit</button>
                 </form>
             </div>
             {badRequestError ?
