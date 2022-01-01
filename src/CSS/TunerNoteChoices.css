@@ -17,10 +17,13 @@
     text-align: center;
 }
 
-@media screen and (max-width: 428px) and (max-height: 926px) {
-    .TunerNoteChoices-align input {
-        margin-left: 0%;
-    }
+.TunerNoteChoices-align input {
+    vertical-align: middle;
+}
+
+.TunerNoteChoices-align input,
+.TunerNoteChoices-align label {
+    width: 30px;
 }
 
 @media screen and (max-width: 330px) {
