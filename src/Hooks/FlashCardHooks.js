@@ -69,7 +69,11 @@ const useFlashCardUpdate = () => {
     
     // An effect that pushes the card into view once "Record" is clicked
     useLayoutEffect(() => {
-      const scrollCardIntoView = () => window.scrollTo(0, document.body.scrollHeight);
+      const scrollCardIntoView = () => window.scrollTo({
+        top: document.body.scrollHeight, 
+        left: 0,
+        behavior: "smooth"
+      });
 
       const pushdownParent = () => {
         if (isRecording && window.innerWidth <= SMALL_SCREEN_BREAKPOINT) {
