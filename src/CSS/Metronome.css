@@ -87,6 +87,18 @@
     }
 }
 
+@media screen and (max-width: 1180px) and (max-height: 820px) {
+    
+    .parent2 {
+        margin-top: 300px;
+        flex-direction: column;
+    }
+
+    .directions2 {
+        width: 50%;
+    }
+}
+
 @media screen and (max-width: 1080px) and (max-height: 810px) {
     
     .parent2 {
