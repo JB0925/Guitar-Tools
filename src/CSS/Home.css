@@ -199,6 +199,10 @@
     .container {
         padding-top: 0px;
     }
+
+    .Home {
+        margin-top: 100px;
+    }
 }
 
 @media screen and ( max-width : 900px) {
