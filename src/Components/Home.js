@@ -1,6 +1,6 @@
 import React, { useRef, useLayoutEffect } from "react";
 import { gsap, Bounce } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { Link } from "react-router-dom";
 import "../CSS/Home.css";
 import Strat from "..//guitars/guitar1.png";
