@@ -190,6 +190,12 @@
     }
 }
 
+@media screen and (max-width: 428px) and (max-height: 926px) {
+    .directions3 {
+        width: 95%;
+    }
+}
+
 @media screen and (max-width: 375px) and (max-height: 667px) {
     
     .parent3 {
