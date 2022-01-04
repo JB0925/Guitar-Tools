@@ -23,9 +23,6 @@ If you would like to login to the app, you can do so with the following:
 
 As a utility app, this app primarily has a frontend focus, but there is a backend API written as well!
 
-The front end was written with React.js, CSS3, and HTML5 / JSX.
-The back end was written with Node.js, Express.js, and Postgres.
-
 # Technologies Used to Create Guitar Tools
 
 Guitar Tools was built with the following technologies and libraries:
@@ -37,6 +34,7 @@ Guitar Tools was built with the following technologies and libraries:
 - Express.js
 - Greensock Animation Platform / Library
 - Pitchy, an audio libary used to detect pitch
+- The Audio_DB API, for data on famous musicians
 
 # How To Install and/or View Guitar Tools
 
